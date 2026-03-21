@@ -1,0 +1,820 @@
+/* --- Typography & base (matches Flatsome child overrides on original) --- */
+:root {
+  --cream: rgb(255, 252, 242);
+  --cream-section: rgb(246, 235, 213);
+  --accent: #993300;
+  --btn-gold: #bfa165;
+  --text-dark: #111;
+  --overlay-dark: rgba(0, 0, 0, 0.593);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Questrial', 'Times New Roman', Times, serif;
+  color: var(--text-dark);
+  background: #fff;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* --- Hero banners (Flatsome-style layers + sparkle like live site) --- */
+.banner-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 55vh;
+}
+.banner-hero .banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.banner-hero--desktop .banner-bg {
+  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/337379080_516820773756682_9195336347623394497_n.jpg');
+  background-position: 42% 77%;
+}
+.banner-hero--mobile {
+  display: none;
+}
+.banner-hero--mobile .banner-bg {
+  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/337545936_994542398598179_1556616276137603008_n.jpg');
+  background-position: 44% 0%;
+}
+/* Sparkle / bokeh overlay — matches visible “white dots” on hero in reference recording */
+.effect-sparkle {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+.effect-sparkle::before,
+.effect-sparkle::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+}
+.effect-sparkle::before {
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle at 22% 78%, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 52% 65%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 18%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 48%, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 15% 55%, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px),
+    radial-gradient(circle at 45% 88%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 82%, rgba(255, 255, 255, 0.8) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 90% 22%, rgba(255, 255, 255, 0.88) 0 2px, transparent 3px),
+    radial-gradient(circle at 33% 42%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 58% 38%, rgba(255, 255, 255, 0.92) 0 1.5px, transparent 2.5px);
+  animation: sparkle-drift-a 14s ease-in-out infinite;
+}
+.effect-sparkle::after {
+  background-image:
+    radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.82) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 48% 15%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 63% 72%, rgba(255, 255, 255, 0.78) 0 1px, transparent 2px),
+    radial-gradient(circle at 88% 58%, rgba(255, 255, 255, 0.92) 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 92%, rgba(255, 255, 255, 0.75) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.85) 0 1px, transparent 2px),
+    radial-gradient(circle at 5% 62%, rgba(255, 255, 255, 0.88) 0 2px, transparent 3px),
+    radial-gradient(circle at 95% 12%, rgba(255, 255, 255, 0.8) 0 1.5px, transparent 2.5px);
+  animation: sparkle-drift-b 11s ease-in-out infinite;
+  opacity: 0.42;
+}
+@keyframes sparkle-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.48;
+  }
+  50% {
+    transform: translate(1.5%, -2%) scale(1.03);
+    opacity: 0.62;
+  }
+}
+@keyframes sparkle-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translate(-2%, 1.5%) rotate(0.5deg);
+    opacity: 0.55;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .effect-sparkle::before,
+  .effect-sparkle::after {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+@media (max-width: 549px) {
+  .banner-hero--desktop {
+    display: none;
+  }
+  .banner-hero--mobile {
+    display: block;
+    min-height: 70vh;
+  }
+}
+@media (min-width: 550px) {
+  .banner-hero--desktop {
+    min-height: 620px;
+  }
+}
+
+/* --- Invitation row --- */
+.invite-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--cream);
+}
+@media (min-width: 850px) {
+  .invite-row {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.invite-col {
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+@media (min-width: 550px) {
+  .invite-col--right {
+    padding: 0 10%;
+  }
+}
+
+.invite-col-inner {
+  background: var(--cream);
+}
+
+.img-chu {
+  width: 51%;
+  margin: 0 auto;
+}
+@media (min-width: 550px) {
+  .img-chu {
+    width: 39%;
+  }
+}
+
+.cover-photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.text-quy-khach {
+  font-size: 115%;
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.text-invite-bold {
+  font-size: 90%;
+  font-weight: 700;
+}
+
+.hotel-title {
+  font-size: 120%;
+  color: #000;
+}
+.hotel-name {
+  font-size: 130%;
+  color: var(--accent);
+}
+
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 99px;
+  background: var(--btn-gold);
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+.time-line {
+  margin: 1rem 0;
+}
+
+/* --- Dark couple section --- */
+.section-dark-couple {
+  position: relative;
+  padding: 30px 12px;
+  color: #fff;
+  background: #222 center / cover no-repeat;
+  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/Hinh-anh-nhan-cuoi-bac-scaled-1.jpg');
+  background-position: 43% 31%;
+}
+.section-dark-couple::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-dark);
+  pointer-events: none;
+}
+.section-dark-couple .inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.couple-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 850px) {
+  .couple-grid {
+    grid-template-columns: 4fr 3fr 4fr;
+  }
+}
+
+.couple-grid p {
+  text-align: justify;
+  hyphens: auto;
+}
+@media (min-width: 850px) {
+  .couple-grid .col-center p {
+    text-align: center;
+  }
+}
+
+/* --- Events / GỢI Ý --- */
+.events-box {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 16px;
+  background: var(--cream-section);
+  border-radius: 24px;
+}
+
+.events-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 850px) {
+  .events-inner {
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+  }
+}
+
+.hide-desktop {
+  display: block;
+}
+.hide-mobile {
+  display: none;
+}
+@media (min-width: 550px) {
+  .hide-desktop {
+    display: none;
+  }
+  .hide-mobile {
+    display: block;
+  }
+}
+
+/* --- Love story --- */
+.love-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .love-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .love-mid {
+    margin-top: 0;
+  }
+}
+
+/* --- Timer --- */
+#ux-timer {
+  font-size: 1.5rem;
+  margin: 16px 0;
+}
+@media (min-width: 550px) {
+  #ux-timer {
+    font-size: 2.2rem;
+  }
+}
+#ux-timer .countdown-inner {
+  display: inline-block;
+  padding: 12px 16px;
+  background: rgba(185, 150, 81, 0.645);
+  color: #fff;
+}
+#ux-timer strong {
+  margin: 0 4px;
+}
+
+.timer-block {
+  text-align: right;
+  padding: 0 12px;
+}
+
+.title-big-day {
+  font-size: 1rem;
+}
+@media (min-width: 550px) {
+  .title-big-day {
+    font-size: 1.15rem;
+  }
+}
+.title-big-day em {
+  font-size: 130%;
+}
+
+/* --- Gallery --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px;
+}
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.gallery-grid a {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.gallery-grid a:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-grid .ratio-tall {
+  aspect-ratio: 2 / 3;
+}
+.gallery-grid .ratio-wide {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- RSVP --- */
+.rsvp-section {
+  padding: 24px 12px;
+}
+
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (min-width: 850px) {
+  .rsvp-row {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.wpcf7-form p {
+  margin: 1rem 0;
+}
+
+.wpcf7-form label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.wpcf7-form input[type='text'],
+.wpcf7-form select {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.wpcf7-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.wpcf7-checkbox .wpcf7-list-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Radio + decorative images (from original inline CSS) */
+.wpcf7-radio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.wpcf7-radio .wpcf7-list-item-label {
+  font-size: 0;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.wpcf7-radio input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.wpcf7-radio .wpcf7-list-item-label img {
+  max-height: 72px;
+  width: auto;
+  transition: none;
+}
+.wpcf7-radio span.wpcf7-list-item {
+  margin: 0 4px;
+  position: relative;
+}
+
+.wpcf7-list-item-label .tdk-no {
+  opacity: 0.6;
+}
+.wpcf7-list-item-label .tdk-yes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.01;
+  filter: brightness(0.6);
+}
+.wpcf7-list-item-label.active .tdk-no {
+  opacity: 0.01;
+}
+.wpcf7-list-item-label.active .tdk-yes {
+  opacity: 1;
+  filter: none;
+}
+
+input.wpcf7-submit.button {
+  background-color: var(--btn-gold) !important;
+  color: #fff !important;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+}
+
+#rsvp-output {
+  margin-top: 12px;
+  padding: 12px;
+  background: #e8f5e9;
+  border-radius: 4px;
+  display: none;
+}
+#rsvp-output.visible {
+  display: block;
+}
+
+.side-rsvp-img {
+  width: 100%;
+  aspect-ratio: 2 / 2.6;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* --- Thank you / gift --- */
+.section-thanks {
+  padding: 30px 12px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.btn-gift {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 99px;
+  background: #c44;
+  color: #fff !important;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 16px 0;
+}
+
+/* Modal */
+.modal-gift {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.modal-gift.open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-gift__panel {
+  background: #fff;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 24px 16px;
+  border-radius: 8px;
+  position: relative;
+}
+.modal-gift__close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.stk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 550px) {
+  .stk-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Footer CTA --- */
+.footer-cta {
+  padding: 40px 12px 60px;
+  text-align: center;
+}
+.footer-cta h2 span {
+  color: #ed1c24;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 480px;
+  margin: 20px auto;
+}
+.footer-links a img {
+  max-height: 48px;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  font-size: 0.9rem;
+}
+.footer-nav a {
+  color: #333;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.lightbox-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox-img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+
+/* --- Scroll reveals (Flatsome data-animate parity) --- */
+[data-animate]:not(.anim-in) {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+[data-animate].anim-in {
+  animation-duration: 0.85s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+[data-animate].anim-in.anim-reduced {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+[data-animate].anim-in.fadeInDown {
+  animation-name: anim-fadeInDown;
+}
+[data-animate].anim-in.fadeInUp {
+  animation-name: anim-fadeInUp;
+}
+[data-animate].anim-in.fadeInLeft {
+  animation-name: anim-fadeInLeft;
+}
+[data-animate].anim-in.fadeInRight {
+  animation-name: anim-fadeInRight;
+}
+[data-animate].anim-in.bounceIn {
+  animation-name: anim-bounceIn;
+  animation-duration: 0.95s;
+}
+[data-animate].anim-in.bounceInUp {
+  animation-name: anim-bounceInUp;
+  animation-duration: 1s;
+}
+
+@keyframes anim-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -36px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes anim-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes anim-fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-36px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes anim-fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(36px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes anim-bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.35, 0.35, 1);
+  }
+  55% {
+    opacity: 1;
+    transform: scale3d(1.06, 1.06, 1);
+  }
+  75% {
+    transform: scale3d(0.92, 0.92, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes anim-bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 56px, 0) scale3d(0.85, 0.85, 1);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -8px, 0) scale3d(1.02, 1.02, 1);
+  }
+  80% {
+    transform: translate3d(0, 4px, 0) scale3d(0.99, 0.99, 1);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate]:not(.anim-in) {
+    opacity: 1;
+    transform: none;
+  }
+  [data-animate].anim-in {
+    animation: none !important;
+  }
+}

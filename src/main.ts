@@ -1,0 +1,29 @@
+import './styles.css';
+import { ASSETS } from './constants';
+import { initCountdown } from './countdown';
+import { initRsvpForm } from './form';
+import { initGalleryLightbox } from './lightbox';
+import { initGiftModal } from './modal';
+import { initRadioIconGroups } from './radio-icons';
+import { initScrollAnimations } from './scroll-animate';
+
+// Expose for debugging
+declare global {
+  interface Window {
+    __THIEP_ASSETS__: typeof ASSETS;
+  }
+}
+window.__THIEP_ASSETS__ = ASSETS;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const timer = document.getElementById('ux-timer');
+  if (timer) initCountdown(timer);
+
+  initScrollAnimations();
+  initRadioIconGroups();
+  initGalleryLightbox();
+  initGiftModal();
+
+  const form = document.getElementById('rsvp-form');
+  if (form instanceof HTMLFormElement) initRsvpForm(form);
+});
