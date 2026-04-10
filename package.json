@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "optimize:wedding": "node scripts/optimize-wedding-photos.mjs",
+    "optimize:wedding:webp": "node scripts/convert-studio-jpg-to-webp.mjs",
     "invite:divider": "node scripts/transparent-invite-divider.mjs",
     "assets:my-wedding": "node scripts/process-my-wedding-assets.mjs"
   },

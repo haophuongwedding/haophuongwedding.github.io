@@ -12,22 +12,22 @@ const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 const W = '/assets/my_wedding/wedding';
 
 /** Top banner + nền section cặp đôi (ảnh ngang). */
-const HERO_IMAGE = `${W}/0X5A9121.JPG`;
+const HERO_IMAGE = `${W}/0X5A9121.webp`;
 
 /** Ảnh đơn nhà trai / nhà gái (section tối giữa). */
-const PHOTO_GROOM_SOLO = `${W}/0X5A9140.JPG`;
-const PHOTO_BRIDE_SOLO = `${W}/0X5A9133.JPG`;
+const PHOTO_GROOM_SOLO = `${W}/0X5A9140.webp`;
+const PHOTO_BRIDE_SOLO = `${W}/0X5A9133.webp`;
 
 /** Cặp Love story (2 ảnh bên trái / giữa, phía trên countdown). */
-const LOVE_PAIR_LEFT = `${W}/0X5A8923.JPG`;
-const LOVE_PAIR_RIGHT = `${W}/0X5A9023.JPG`;
+const LOVE_PAIR_LEFT = `${W}/0X5A8923.webp`;
+const LOVE_PAIR_RIGHT = `${W}/0X5A9023.webp`;
 
 /** Cặp cột countdown (bên phải, cạnh đồng hồ). */
 const COUNTDOWN_PAIR_LEFT = PHOTO_GROOM_SOLO;
 const COUNTDOWN_PAIR_RIGHT = PHOTO_BRIDE_SOLO;
 
 /** Ảnh lớn cột trái thiệp mời (dưới monogram). */
-const INVITE_COVER_PHOTO = `${W}/0X5A9034.JPG`;
+const INVITE_COVER_PHOTO = `${W}/0X5A9034.webp`;
 
 /** Seed — đổi chuỗi này để xáo thứ tự gallery khác (vẫn ổn định mỗi lần load). */
 const GALLERY_SHUFFLE_SEED = 'hao-phuong-gallery-2026';
@@ -52,26 +52,26 @@ function seededShuffle<T>(items: readonly T[], seed: string): T[] {
 
 /** Alphabetically sorted filenames under `public/assets/my_wedding/wedding/`. */
 export const MY_WEDDING_DAY = [
-  `${W}/0X5A8921.JPG`,
-  `${W}/0X5A8923.JPG`,
-  `${W}/0X5A8945s.jpg`,
-  `${W}/0X5A8978.JPG`,
-  `${W}/0X5A8988.JPG`,
-  `${W}/0X5A8990.JPG`,
-  `${W}/0X5A8999.JPG`,
-  `${W}/0X5A9023.JPG`,
-  `${W}/0X5A9024.JPG`,
-  `${W}/0X5A9034.JPG`,
-  `${W}/0X5A9057.JPG`,
-  `${W}/0X5A9101.JPG`,
-  `${W}/0X5A9103.JPG`,
-  `${W}/0X5A9106.JPG`,
-  `${W}/0X5A9111.JPG`,
-  `${W}/0X5A9113.JPG`,
-  `${W}/0X5A9121.JPG`,
-  `${W}/0X5A9133.JPG`,
-  `${W}/0X5A9140.JPG`,
-  `${W}/3-copy.jpg`,
+  `${W}/0X5A8921.webp`,
+  `${W}/0X5A8923.webp`,
+  `${W}/0X5A8945s.webp`,
+  `${W}/0X5A8978.webp`,
+  `${W}/0X5A8988.webp`,
+  `${W}/0X5A8990.webp`,
+  `${W}/0X5A8999.webp`,
+  `${W}/0X5A9023.webp`,
+  `${W}/0X5A9024.webp`,
+  `${W}/0X5A9034.webp`,
+  `${W}/0X5A9057.webp`,
+  `${W}/0X5A9101.webp`,
+  `${W}/0X5A9103.webp`,
+  `${W}/0X5A9106.webp`,
+  `${W}/0X5A9111.webp`,
+  `${W}/0X5A9113.webp`,
+  `${W}/0X5A9121.webp`,
+  `${W}/0X5A9133.webp`,
+  `${W}/0X5A9140.webp`,
+  `${W}/3-copy.webp`,
 ] as const;
 
 const RESERVED_PHOTOS = new Set<string>([
