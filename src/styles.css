@@ -982,11 +982,15 @@ input.wpcf7-submit.button {
 .stk-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 10px;
+  justify-items: center;
+  max-width: 760px;
+  margin: 18px auto 0;
 }
 @media (min-width: 550px) {
   .stk-grid {
     grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
   }
 }
 

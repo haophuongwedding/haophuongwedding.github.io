@@ -159,8 +159,8 @@ export const weddingAssets = {
     },
   },
   giftsModal: {
-    stkPrimary: '/assets/gifts/stk-primary.png',
-    stkSecondary: '/assets/gifts/stk-secondary.png',
+    stkPrimary: '/assets/gifts/final_qr_husband.png',
+    stkSecondary: '/assets/gifts/final_qr_wife.png',
     dateIllustration: giftsDateIllustration,
   },
   thanks: {
