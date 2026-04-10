@@ -592,6 +592,109 @@ a {
   padding: 24px 12px;
 }
 
+.wishes-section {
+  padding: 18px 0 8px;
+}
+
+.wishes-carousel {
+  max-width: 860px;
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  gap: 10px;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.wishes-viewport {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.wishes-track {
+  display: flex;
+  width: 100%;
+  transform: translateX(0%);
+  transition: transform 320ms ease;
+  will-change: transform;
+}
+
+.wish-card {
+  flex: 0 0 100%;
+  padding: 18px 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 242, 0.9) 0%, rgba(246, 235, 213, 0.92) 100%);
+  border: 1px solid rgba(191, 161, 101, 0.28);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.wish-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wish-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #2b1f0f;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(191, 161, 101, 0.35);
+}
+
+.wish-name {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.wish-sub {
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+.wish-text {
+  margin: 12px 0 0;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.wishes-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(191, 161, 101, 0.38);
+  background: rgba(255, 252, 242, 0.9);
+  color: #3b2a13;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+.wishes-arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.wishes-arrow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(191, 161, 101, 0.22), 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 520px) {
+  .wishes-carousel {
+    grid-template-columns: 40px 1fr 40px;
+  }
+  .wishes-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
 .rsvp-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -602,8 +705,53 @@ a {
 @media (min-width: 850px) {
   .rsvp-row {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: stretch;
   }
+}
+
+.rsvp-form-col {
+  height: 100%;
+}
+
+.rsvp-photo-col {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.rsvp-photo-col .side-rsvp-img {
+  height: 100%;
+}
+
+.rsvp-card {
+  background: linear-gradient(180deg, rgba(246, 235, 213, 0.95) 0%, rgba(255, 252, 242, 0.98) 100%);
+  border: 1px solid rgba(191, 161, 101, 0.35);
+  border-radius: 28px;
+  padding: 22px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+@media (min-width: 550px) {
+  .rsvp-card {
+    padding: 26px 22px;
+  }
+}
+
+.rsvp-card__head {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.rsvp-title {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+}
+.rsvp-subtitle {
+  margin: 8px auto 0;
+  max-width: 420px;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
 .wpcf7-form p {
@@ -614,22 +762,47 @@ a {
   font-weight: 600;
   display: block;
   margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.78rem;
+  opacity: 0.9;
 }
 
 .wpcf7-form input[type='text'],
-.wpcf7-form select {
+.wpcf7-form select,
+.wpcf7-form textarea {
   width: 100%;
   max-width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
   font: inherit;
+  background: rgba(255, 255, 255, 0.72);
+  outline: none;
+}
+.wpcf7-form textarea {
+  border-radius: 18px;
+  resize: vertical;
+}
+
+.wpcf7-form input[type='text']:focus,
+.wpcf7-form select:focus,
+.wpcf7-form textarea:focus {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(153, 51, 0, 0.25);
+  box-shadow: 0 0 0 4px rgba(191, 161, 101, 0.18);
 }
 
 .wpcf7-checkbox {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+@media (min-width: 550px) {
+  .wpcf7-checkbox {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .wpcf7-checkbox .wpcf7-list-item label {
   display: flex;
@@ -637,20 +810,48 @@ a {
   gap: 8px;
   font-weight: 500;
   cursor: pointer;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
 }
 
 /* Radio + decorative images (from original inline CSS) */
 .wpcf7-radio {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 8px;
 }
+
+/* Make RSVP “image radios” align neatly on mobile */
+#tdk-coming {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+#tdk-holder {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
 .wpcf7-radio .wpcf7-list-item-label {
-  font-size: 0;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 10px 12px;
+  border-radius: 999px;
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 .wpcf7-radio input[type='radio'] {
   position: absolute;
@@ -658,26 +859,11 @@ a {
   width: 0;
   height: 0;
 }
-.wpcf7-radio .wpcf7-list-item-label img {
-  max-height: 72px;
-  width: auto;
-  transition: none;
-}
 .wpcf7-radio span.wpcf7-list-item {
   margin: 0 4px;
   position: relative;
 }
 
-.wpcf7-list-item-label .tdk-no {
-  opacity: 0.6;
-}
-.wpcf7-list-item-label .tdk-yes {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0.01;
-  filter: brightness(0.6);
-}
 .wpcf7-list-item-label.active .tdk-no {
   opacity: 0.01;
 }
@@ -685,13 +871,30 @@ a {
   opacity: 1;
   filter: none;
 }
+.rsvp-radio-text .wpcf7-list-item-label.active {
+  background: rgba(191, 161, 101, 0.32);
+  border-color: rgba(191, 161, 101, 0.55);
+}
+.rsvp-radio-text .wpcf7-list-item-label::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  margin-right: 10px;
+  flex: 0 0 auto;
+}
+.rsvp-radio-text .wpcf7-list-item-label.active::before {
+  border-color: rgba(153, 51, 0, 0.55);
+  background: rgba(153, 51, 0, 0.35);
+}
 
 input.wpcf7-submit.button {
   background-color: var(--btn-gold) !important;
   color: #fff !important;
   border: none;
   padding: 14px 28px;
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
@@ -713,7 +916,8 @@ input.wpcf7-submit.button {
   width: 100%;
   aspect-ratio: 2 / 2.6;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 }
 
 /* --- Thank you / gift --- */

@@ -5,10 +5,10 @@ import { ASSETS } from './constants';
 import { initCountdown } from './countdown';
 import { initRsvpForm } from './form';
 import { initGalleryLightbox } from './lightbox';
-import { initGiftModal } from './modal';
 import { initRadioIconGroups } from './radio-icons';
 import { initScrollAnimations } from './scroll-animate';
 import { initGalleryAspectRatios } from './gallery-aspect';
+import { initWishesCarousel } from './wishes';
 
 applyAssets();
 applyWeddingContent();
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initRadioIconGroups();
   initGalleryLightbox();
-  initGiftModal();
+  initWishesCarousel();
 
   const form = document.getElementById('rsvp-form');
   if (form instanceof HTMLFormElement) initRsvpForm(form);

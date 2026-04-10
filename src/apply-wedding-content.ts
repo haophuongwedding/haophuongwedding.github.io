@@ -11,7 +11,7 @@ function getByPath(obj: unknown, path: string): unknown {
 }
 
 export function applyWeddingContent(): void {
-  const { meta, invite, rsvp } = weddingContent;
+  const { meta, invite } = weddingContent;
 
   document.title = meta.title;
   const metaDesc = document.querySelector('meta[name="description"]');
@@ -32,19 +32,4 @@ export function applyWeddingContent(): void {
     mapBtn.href = invite.mapUrl;
     mapBtn.textContent = invite.mapButtonLabel;
   }
-
-  const partyInputs = document.querySelectorAll<HTMLInputElement>('input[name="checkbox-party[]"]');
-  const partyLabels = document.querySelectorAll(
-    '#rsvp-form .wpcf7-checkbox .wpcf7-list-item-label',
-  );
-  rsvp.parties.forEach((party, i) => {
-    const input = partyInputs[i];
-    if (input) {
-      input.value = party.value;
-    }
-    const label = partyLabels[i];
-    if (label) {
-      label.textContent = party.label;
-    }
-  });
 }

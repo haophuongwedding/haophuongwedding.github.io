@@ -2,10 +2,10 @@ import { syncRadioIconGroups } from './radio-icons';
 
 export interface RsvpPayload {
   guestName: string;
-  parties: string[];
   attendance: string;
   guestCount: string;
   guestOf: string;
+  message: string;
 }
 
 export function initRsvpForm(form: HTMLFormElement): void {
@@ -15,12 +15,6 @@ export function initRsvpForm(form: HTMLFormElement): void {
     e.preventDefault();
 
     const fd = new FormData(form);
-    const parties = fd.getAll('checkbox-party[]').filter((v): v is string => typeof v === 'string');
-
-    if (parties.length === 0) {
-      alert('Vui lòng chọn ít nhất một bữa tiệc.');
-      return;
-    }
 
     const guestName = String(fd.get('your-name') ?? '').trim();
     if (!guestName) {
@@ -31,6 +25,7 @@ export function initRsvpForm(form: HTMLFormElement): void {
     const attendance = String(fd.get('radio-coming') ?? '');
     const guestCount = String(fd.get('menu-coming') ?? '');
     const guestOf = String(fd.get('radio-holder') ?? '');
+    const message = String(fd.get('your-message') ?? '').trim();
 
     if (!guestCount || guestCount === 'Số người dự tiệc') {
       alert('Vui lòng chọn số người tham dự.');
@@ -39,10 +34,10 @@ export function initRsvpForm(form: HTMLFormElement): void {
 
     const payload: RsvpPayload = {
       guestName,
-      parties,
       attendance,
       guestCount,
       guestOf,
+      message,
     };
 
     // Replace with fetch('/api/rsvp', { method: 'POST', body: JSON.stringify(payload) })

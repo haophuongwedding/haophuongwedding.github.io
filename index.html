@@ -148,7 +148,7 @@
       </div>
 
       <div class="text-center mt-1" data-animate="fadeInUp">
-        <img style="width: 69%; max-width: 882px" data-asset="shared.ribbonHeading" alt="" />
+        <img style="width: 30%; max-width: 440px" data-asset="shared.ribbonHeading" alt="" />
       </div>
 
       <div class="gallery-grid" id="gallery">
@@ -167,6 +167,10 @@
         <a class="js-lightbox" data-gallery-index="12"><img alt="" /></a>
       </div>
 
+      <div class="text-center mt-1" data-animate="fadeInUp">
+        <img style="width: 35%; max-width: 560px" data-asset="shared.weddingAttending" alt="Wedding Attending" />
+      </div>
+
       <p
         class="text-center"
         style="max-width: 720px; margin: 24px auto; padding: 0 12px"
@@ -181,139 +185,126 @@
 
       <div class="rsvp-section">
         <div class="rsvp-row">
-          <div data-animate="fadeInLeft">
-            <form id="rsvp-form" class="wpcf7-form" novalidate>
-              <div class="form-flat">
-                <p>
-                  <label>Tên khách mời:</label><br />
-                  <input
-                    class="wpcf7-form-control wpcf7-text"
-                    type="text"
-                    name="your-name"
-                    placeholder="Vui lòng điền tên của bạn:"
-                    required
-                  />
-                </p>
-                <p>
-                  <label>Bạn tham dự được bữa tiệc nào?</label><br />
-                  <span class="wpcf7-form-control wpcf7-checkbox">
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="checkbox" name="checkbox-party[]" value="TIỆC CƯỚI NHÀ GÁI (11/07)" />
-                        <span class="wpcf7-list-item-label">TIỆC CƯỚI NHÀ GÁI (11/07)</span></label
-                      ></span
-                    >
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="checkbox" name="checkbox-party[]" value="TIỆC CƯỚI NHÀ TRAI (13/07)" />
-                        <span class="wpcf7-list-item-label">TIỆC CƯỚI NHÀ TRAI (13/07)</span></label
-                      ></span
-                    >
-                  </span>
-                </p>
-                <p>
-                  <label> Quý khách tham dự được chứ?</label><br />
-                  <span class="wpcf7-form-control wpcf7-radio" id="tdk-coming">
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="radio" name="radio-coming" value="THAM DỰ" />
-                        <span class="wpcf7-list-item-label">
-                          <img class="tdk-no" data-asset="rsvp.radio.comingNo" alt="Tham dự" />
-                          <img class="tdk-yes" data-asset="rsvp.radio.comingYes" alt="" />
-                        </span></label
-                      ></span
-                    >
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="radio" name="radio-coming" value="CÓ THỂ" checked />
-                        <span class="wpcf7-list-item-label active">
-                          <img class="tdk-no" data-asset="rsvp.radio.maybeNo" alt="Có thể" />
-                          <img class="tdk-yes" data-asset="rsvp.radio.maybeYes" alt="" />
-                        </span></label
-                      ></span
-                    >
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="radio" name="radio-coming" value="RẤT TIẾC" />
-                        <span class="wpcf7-list-item-label">
-                          <img class="tdk-no" data-asset="rsvp.radio.sorryNo" alt="Rất tiếc" />
-                          <img class="tdk-yes" data-asset="rsvp.radio.sorryYes" alt="" />
-                        </span></label
-                      ></span
-                    >
-                  </span>
-                </p>
-                <p>
-                  <label> Số người tham dự:</label><br />
-                  <select class="wpcf7-form-control wpcf7-select" name="menu-coming" required>
-                    <option value="Số người dự tiệc" selected disabled>Số người dự tiệc</option>
-                    <option value="1 người">1 người</option>
-                    <option value="2 người">2 người</option>
-                    <option value="3 người">3 người</option>
-                    <option value="4 người">4 người</option>
-                  </select>
-                </p>
-                <p>
-                  <label>Bạn là khách mời của:</label><br />
-                  <span class="wpcf7-form-control wpcf7-radio" id="tdk-holder">
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="radio" name="radio-holder" value="KHÁCH NHÀ TRAI" checked />
-                        <span class="wpcf7-list-item-label active">
-                          <img class="tdk-no" data-asset="rsvp.radio.groomSideNo" alt="Khách nhà trai" />
-                          <img class="tdk-yes" data-asset="rsvp.radio.groomSideYes" alt="" />
-                        </span></label
-                      ></span
-                    >
-                    <span class="wpcf7-list-item"
-                      ><label
-                        ><input type="radio" name="radio-holder" value="KHÁCH NHÀ GÁI" />
-                        <span class="wpcf7-list-item-label">
-                          <img class="tdk-no" data-asset="rsvp.radio.brideSideNo" alt="Khách nhà gái" />
-                          <img class="tdk-yes" data-asset="rsvp.radio.brideSideYes" alt="" />
-                        </span></label
-                      ></span
-                    >
-                  </span>
-                </p>
-                <p>
-                  <input class="wpcf7-form-control wpcf7-submit button" type="submit" value="Xác nhận tham dự" />
-                </p>
+          <div class="rsvp-form-col" data-animate="fadeInLeft">
+            <div class="rsvp-card">
+              <div class="rsvp-card__head">
+                <h3 class="rsvp-title">XÁC NHẬN THAM DỰ</h3>
+                <p class="rsvp-subtitle">Vui lòng điền thông tin theo form dưới đây để xác nhận tham dự với chúng tôi!</p>
               </div>
-            </form>
+
+              <form id="rsvp-form" class="wpcf7-form" novalidate>
+                <div class="form-flat">
+                  <p>
+                    <label>Tên khách mời:</label><br />
+                    <input
+                      class="wpcf7-form-control wpcf7-text"
+                      type="text"
+                      name="your-name"
+                      placeholder="Vui lòng điền tên của bạn:"
+                      required
+                    />
+                  </p>
+                  <p>
+                    <label> Quý khách tham dự được chứ?</label><br />
+                    <span class="wpcf7-form-control wpcf7-radio rsvp-radio-text" id="tdk-coming">
+                      <span class="wpcf7-list-item"
+                        ><label
+                          ><input type="radio" name="radio-coming" value="THAM DỰ" />
+                          <span class="wpcf7-list-item-label">THAM DỰ</span></label
+                        ></span
+                      >
+                      <span class="wpcf7-list-item"
+                        ><label
+                          ><input type="radio" name="radio-coming" value="CÓ THỂ" checked />
+                          <span class="wpcf7-list-item-label active">CÓ THỂ</span></label
+                        ></span
+                      >
+                      <span class="wpcf7-list-item"
+                        ><label
+                          ><input type="radio" name="radio-coming" value="RẤT TIẾC" />
+                          <span class="wpcf7-list-item-label">RẤT TIẾC</span></label
+                        ></span
+                      >
+                    </span>
+                  </p>
+                  <p>
+                    <label> Số người tham dự:</label><br />
+                    <select class="wpcf7-form-control wpcf7-select" name="menu-coming" required>
+                      <option value="Số người dự tiệc" selected disabled>Số người dự tiệc</option>
+                      <option value="1 người">1 người</option>
+                      <option value="2 người">2 người</option>
+                      <option value="3 người">3 người</option>
+                      <option value="4 người">4 người</option>
+                    </select>
+                  </p>
+                  <p>
+                    <label>Bạn là khách mời của:</label><br />
+                    <span class="wpcf7-form-control wpcf7-radio rsvp-radio-text" id="tdk-holder">
+                      <span class="wpcf7-list-item"
+                        ><label
+                          ><input type="radio" name="radio-holder" value="KHÁCH NHÀ TRAI" checked />
+                          <span class="wpcf7-list-item-label active">KHÁCH NHÀ TRAI</span></label
+                        ></span
+                      >
+                      <span class="wpcf7-list-item"
+                        ><label
+                          ><input type="radio" name="radio-holder" value="KHÁCH NHÀ GÁI" />
+                          <span class="wpcf7-list-item-label">KHÁCH NHÀ GÁI</span></label
+                        ></span
+                      >
+                    </span>
+                  </p>
+
+                  <p>
+                    <label>Gửi lời chúc tới dâu rể:</label><br />
+                    <textarea
+                      class="wpcf7-form-control wpcf7-textarea"
+                      name="your-message"
+                      rows="4"
+                      placeholder="Gửi lời chúc tới dâu rể tại đây"
+                    ></textarea>
+                  </p>
+
+                  <p>
+                    <input class="wpcf7-form-control wpcf7-submit button" type="submit" value="Xác nhận tham dự" />
+                  </p>
+                </div>
+              </form>
+            </div>
             <div id="rsvp-output" role="status"></div>
           </div>
-          <div data-animate="fadeInRight">
+          <div class="rsvp-photo-col" data-animate="fadeInRight">
             <img class="side-rsvp-img" data-asset="rsvp.sidePhoto" alt="" />
           </div>
         </div>
       </div>
     </div>
 
+    <section class="wishes-section" aria-label="Wedding Wishes">
+      <div class="container">
+        <div class="text-center" data-animate="fadeInUp">
+          <img style="width: 55%; max-width: 560px" data-asset="shared.weddingWishes" alt="Wedding Wishes" />
+        </div>
+
+        <div class="wishes-carousel" data-animate="fadeInUp">
+          <button class="wishes-arrow wishes-arrow--prev" type="button" aria-label="Lời chúc trước" data-wishes-prev>
+            ‹
+          </button>
+
+          <div class="wishes-viewport" aria-live="polite">
+            <div class="wishes-track" id="wishes-track"></div>
+          </div>
+
+          <button class="wishes-arrow wishes-arrow--next" type="button" aria-label="Lời chúc tiếp theo" data-wishes-next>
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+
     <section class="section-thanks">
       <div class="text-center" data-animate="fadeInDown">
-        <img style="width: 69%; max-width: 882px" data-asset="shared.ribbonHeading" alt="" />
-      </div>
-      <p>
-        <button type="button" class="btn-gift" id="btn-gift-open">GỬI QUÀ CƯỚI</button>
-      </p>
-
-      <div class="modal-gift" id="modal-gift" aria-hidden="true" role="dialog" aria-labelledby="modal-gift-title">
-        <div class="modal-gift__panel">
-          <button type="button" class="modal-gift__close" data-close-modal aria-label="Đóng">&times;</button>
-          <h3 id="modal-gift-title">CẢM ƠN QUÝ KHÁCH VÌ ĐÃ TRỞ THÀNH MỘT PHẦN QUAN TRỌNG TRONG NGÀY ĐẶC BIỆT CỦA CHÚNG TÔI.</h3>
-          <div class="stk-grid" style="margin-top: 24px">
-            <div class="text-center">
-              <img style="width: 76%; max-width: 320px" data-asset="giftsModal.stkPrimary" alt="STK" />
-            </div>
-            <div class="text-center">
-              <img style="width: 76%; max-width: 320px" data-asset="giftsModal.stkSecondary" alt="STK" />
-            </div>
-          </div>
-          <div class="text-center" style="margin-top: 24px">
-            <img style="width: 50%; max-width: 450px" data-asset="giftsModal.dateIllustration" alt="" />
-          </div>
-        </div>
+        <img style="width: 55%; max-width: 560px" data-asset="shared.weddingGift" alt="Wedding Gift" />
       </div>
 
       <p>
@@ -323,7 +314,16 @@
           đầu mới cho hành trình yêu thương của chúng mình nhé!</em
         >
       </p>
-      <img style="width: 45%; max-width: 400px" data-asset="thanks.bankNote" alt="" />
+
+      <div class="stk-grid" style="margin-top: 18px">
+        <div class="text-center">
+          <img style="width: 76%; max-width: 320px" data-asset="giftsModal.stkPrimary" alt="QR ngân hàng" />
+        </div>
+        <div class="text-center">
+          <img style="width: 76%; max-width: 320px" data-asset="giftsModal.stkSecondary" alt="QR ngân hàng" />
+        </div>
+      </div>
+
       <div>
         <img style="width: 50%; max-width: 450px; margin-top: 16px" data-asset="thanks.dateAccent" alt="" />
       </div>
