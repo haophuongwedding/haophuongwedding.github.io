@@ -4,7 +4,7 @@
  */
 export const weddingContent = {
   meta: {
-    title: 'Thiệp mời cưới Hoàng Văn Hào & Nguyễn Thảo Phương',
+    title: 'Hào & Phương Wedding',
     description:
       'Trân trọng kính mời — Lễ thành hôn & tiệc cưới 15/04/2026 tại Quảng Trị. Hoàng Văn Hào & Nguyễn Thảo Phương.',
   },
