@@ -371,9 +371,7 @@ a {
 .events-box {
   max-width: 1100px;
   margin: 24px auto;
-  padding: 16px;
-  background: var(--cream-section);
-  border-radius: 24px;
+  padding: 0;
 }
 
 .events-inner {
@@ -386,6 +384,13 @@ a {
     grid-template-columns: 2fr 1fr;
     align-items: center;
   }
+}
+
+.events-card {
+  padding: 16px;
+  background: var(--cream-section);
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .hide-desktop {
