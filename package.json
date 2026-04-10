@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize:wedding": "node scripts/optimize-wedding-photos.mjs",
+    "invite:divider": "node scripts/transparent-invite-divider.mjs",
+    "assets:my-wedding": "node scripts/process-my-wedding-assets.mjs"
   },
   "devDependencies": {
+    "sharp": "^0.33.5",
     "typescript": "~5.6.3",
     "vite": "^5.4.11"
   }

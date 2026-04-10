@@ -1,4 +1,6 @@
 import './styles.css';
+import { applyAssets } from './apply-assets';
+import { applyWeddingContent } from './apply-wedding-content';
 import { ASSETS } from './constants';
 import { initCountdown } from './countdown';
 import { initRsvpForm } from './form';
@@ -6,6 +8,11 @@ import { initGalleryLightbox } from './lightbox';
 import { initGiftModal } from './modal';
 import { initRadioIconGroups } from './radio-icons';
 import { initScrollAnimations } from './scroll-animate';
+import { initGalleryAspectRatios } from './gallery-aspect';
+
+applyAssets();
+applyWeddingContent();
+initGalleryAspectRatios();
 
 // Expose for debugging
 declare global {

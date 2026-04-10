@@ -65,15 +65,16 @@ a {
   background-repeat: no-repeat;
 }
 .banner-hero--desktop .banner-bg {
-  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/337379080_516820773756682_9195336347623394497_n.jpg');
-  background-position: 42% 77%;
+  background-image: var(--wedding-hero-desktop);
+  /* cover crops edges; anchor top so faces (upper frame) stay in view */
+  background-position: center top;
 }
 .banner-hero--mobile {
   display: none;
 }
 .banner-hero--mobile .banner-bg {
-  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/337545936_994542398598179_1556616276137603008_n.jpg');
-  background-position: 44% 0%;
+  background-image: var(--wedding-hero-mobile);
+  background-position: center top;
 }
 /* Sparkle / bokeh overlay — matches visible “white dots” on hero in reference recording */
 .effect-sparkle {
@@ -95,31 +96,31 @@ a {
 }
 .effect-sparkle::before {
   background-image:
-    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
-    radial-gradient(circle at 22% 78%, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 52% 65%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
-    radial-gradient(circle at 68% 18%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
-    radial-gradient(circle at 82% 48%, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 15% 55%, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px),
-    radial-gradient(circle at 45% 88%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 72% 82%, rgba(255, 255, 255, 0.8) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 90% 22%, rgba(255, 255, 255, 0.88) 0 2px, transparent 3px),
-    radial-gradient(circle at 33% 42%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
-    radial-gradient(circle at 58% 38%, rgba(255, 255, 255, 0.92) 0 1.5px, transparent 2.5px);
-  animation: sparkle-drift-a 14s ease-in-out infinite;
+    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.95) 0 5px, rgba(255, 255, 255, 0.2) 8px, transparent 12px),
+    radial-gradient(circle at 22% 78%, rgba(255, 255, 255, 0.85) 0 4px, rgba(255, 255, 255, 0.15) 7px, transparent 11px),
+    radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.9) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 52% 65%, rgba(255, 255, 255, 0.8) 0 3px, rgba(255, 255, 255, 0.12) 6px, transparent 10px),
+    radial-gradient(circle at 68% 18%, rgba(255, 255, 255, 0.95) 0 5px, rgba(255, 255, 255, 0.2) 8px, transparent 12px),
+    radial-gradient(circle at 82% 48%, rgba(255, 255, 255, 0.85) 0 4px, rgba(255, 255, 255, 0.15) 7px, transparent 11px),
+    radial-gradient(circle at 15% 55%, rgba(255, 255, 255, 0.75) 0 3px, rgba(255, 255, 255, 0.1) 6px, transparent 10px),
+    radial-gradient(circle at 45% 88%, rgba(255, 255, 255, 0.9) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 72% 82%, rgba(255, 255, 255, 0.8) 0 4px, rgba(255, 255, 255, 0.14) 7px, transparent 11px),
+    radial-gradient(circle at 90% 22%, rgba(255, 255, 255, 0.88) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 33% 42%, rgba(255, 255, 255, 0.7) 0 3px, rgba(255, 255, 255, 0.1) 6px, transparent 10px),
+    radial-gradient(circle at 58% 38%, rgba(255, 255, 255, 0.92) 0 4px, rgba(255, 255, 255, 0.16) 7px, transparent 11px);
+  animation: sparkle-drift-a 5.5s ease-in-out infinite;
 }
 .effect-sparkle::after {
   background-image:
-    radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.82) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 48% 15%, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 63% 72%, rgba(255, 255, 255, 0.78) 0 1px, transparent 2px),
-    radial-gradient(circle at 88% 58%, rgba(255, 255, 255, 0.92) 0 2px, transparent 3px),
-    radial-gradient(circle at 28% 92%, rgba(255, 255, 255, 0.75) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.85) 0 1px, transparent 2px),
-    radial-gradient(circle at 5% 62%, rgba(255, 255, 255, 0.88) 0 2px, transparent 3px),
-    radial-gradient(circle at 95% 12%, rgba(255, 255, 255, 0.8) 0 1.5px, transparent 2.5px);
-  animation: sparkle-drift-b 11s ease-in-out infinite;
+    radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.82) 0 4px, rgba(255, 255, 255, 0.14) 7px, transparent 11px),
+    radial-gradient(circle at 48% 15%, rgba(255, 255, 255, 0.9) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 63% 72%, rgba(255, 255, 255, 0.78) 0 3px, rgba(255, 255, 255, 0.12) 6px, transparent 10px),
+    radial-gradient(circle at 88% 58%, rgba(255, 255, 255, 0.92) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 28% 92%, rgba(255, 255, 255, 0.75) 0 4px, rgba(255, 255, 255, 0.12) 7px, transparent 11px),
+    radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.85) 0 3px, rgba(255, 255, 255, 0.12) 6px, transparent 10px),
+    radial-gradient(circle at 5% 62%, rgba(255, 255, 255, 0.88) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
+    radial-gradient(circle at 95% 12%, rgba(255, 255, 255, 0.8) 0 4px, rgba(255, 255, 255, 0.14) 7px, transparent 11px);
+  animation: sparkle-drift-b 4.5s ease-in-out infinite;
   opacity: 0.42;
 }
 @keyframes sparkle-drift-a {
@@ -129,8 +130,8 @@ a {
     opacity: 0.48;
   }
   50% {
-    transform: translate(1.5%, -2%) scale(1.03);
-    opacity: 0.62;
+    transform: translate(4.5%, -5.5%) scale(1.08);
+    opacity: 0.66;
   }
 }
 @keyframes sparkle-drift-b {
@@ -140,8 +141,8 @@ a {
     opacity: 0.38;
   }
   50% {
-    transform: translate(-2%, 1.5%) rotate(0.5deg);
-    opacity: 0.55;
+    transform: translate(-5.5%, 4%) rotate(0.8deg);
+    opacity: 0.58;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -171,6 +172,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
+  align-items: stretch;
   background: var(--cream);
 }
 @media (min-width: 850px) {
@@ -186,12 +188,50 @@ a {
 }
 @media (min-width: 550px) {
   .invite-col--right {
-    padding: 0 10%;
+    /* Giữ lề ngang 10%; padding dọc khớp cột trái (trước đây spacer 16px bị mất khi bỏ div) */
+    padding: 24px 10% 32px;
   }
 }
 
 .invite-col-inner {
   background: var(--cream);
+}
+
+/* Desktop: cột trái full chiều cao hàng grid; ảnh bìa giãn theo chiều dọc để cân cột phải (như mẫu) */
+@media (min-width: 850px) {
+  .invite-col-inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    align-items: center;
+  }
+}
+
+.invite-inner-head {
+  flex-shrink: 0;
+  padding-top: 24px;
+  width: 100%;
+}
+@media (min-width: 850px) {
+  .invite-inner-head {
+    /* Cùng mốc top với banner phải: .invite-col đã padding-top 24px */
+    padding-top: 0;
+  }
+}
+
+.invite-inner-photo {
+  width: 100%;
+  margin-top: 24px;
+}
+@media (min-width: 850px) {
+  .invite-inner-photo {
+    flex: 1 1 0;
+    min-height: 0;
+    align-self: stretch;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .img-chu {
@@ -208,6 +248,19 @@ a {
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+@media (min-width: 850px) {
+  .invite-inner-photo .cover-photo {
+    flex: 1 1 auto;
+    min-height: 220px;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: unset;
+    object-fit: cover;
+    object-position: center top;
+  }
 }
 
 .text-quy-khach {
@@ -253,22 +306,40 @@ a {
 /* --- Dark couple section --- */
 .section-dark-couple {
   position: relative;
+  overflow: hidden;
   padding: 30px 12px;
   color: #fff;
-  background: #222 center / cover no-repeat;
-  background-image: url('https://thiepcuoionline.net/wp-content/uploads/2024/06/Hinh-anh-nhan-cuoi-bac-scaled-1.jpg');
-  background-position: 43% 31%;
+  background: #222;
 }
+
+/* Blurred photo layer (giống mẫu thiệp — chỉ blur nền, không blur chữ/ảnh) */
 .section-dark-couple::before {
   content: '';
   position: absolute;
+  inset: -18px;
+  z-index: 0;
+  background-image: var(--wedding-couple-section-bg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(11px);
+  transform: scale(1.07);
+  pointer-events: none;
+}
+
+/* Lớp tối giữ độ tương phản chữ trắng */
+.section-dark-couple::after {
+  content: '';
+  position: absolute;
   inset: 0;
+  z-index: 1;
   background: var(--overlay-dark);
   pointer-events: none;
 }
+
 .section-dark-couple .inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -332,21 +403,85 @@ a {
   }
 }
 
-/* --- Love story --- */
+/* --- Love story (outline giống mẫu thiệp: viền vàng, khung dọc đồng bộ) --- */
 .love-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
   max-width: 1100px;
   margin: 0 auto;
+  padding: 0 12px;
 }
+
+.love-story-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.love-story-frame {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid var(--btn-gold);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(180deg, #fdfcfa 0%, #f3efe6 100%);
+}
+
+/* Hai ảnh lớn: cùng khung 3:4 — outline thẳng hàng (ảnh crop trong khung) */
+.love-story-frame--main {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
+}
+
+.love-story-frame--main img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
 @media (min-width: 768px) {
   .love-row {
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    gap: 18px;
   }
   .love-mid {
     margin-top: 0;
   }
+  .love-story-frame--main {
+    max-width: none;
+    width: 100%;
+    max-height: min(70vh, 540px);
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Cặp nhỏ countdown: cùng khung dọc, cùng chiều cao */
+.countdown-pair {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.love-story-frame--countdown {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  max-width: 136px;
+}
+
+.love-story-frame--countdown img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
 }
 
 /* --- Timer --- */
@@ -370,8 +505,11 @@ a {
 }
 
 .timer-block {
-  text-align: right;
-  padding: 0 12px;
+  text-align: center;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title-big-day {
@@ -407,6 +545,7 @@ a {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  aspect-ratio: 1;
 }
 .gallery-grid a:hover {
   transform: translateY(-4px) scale(1.02);
@@ -623,36 +762,6 @@ input.wpcf7-submit.button {
   .stk-grid {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-/* --- Footer CTA --- */
-.footer-cta {
-  padding: 40px 12px 60px;
-  text-align: center;
-}
-.footer-cta h2 span {
-  color: #ed1c24;
-}
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  max-width: 480px;
-  margin: 20px auto;
-}
-.footer-links a img {
-  max-height: 48px;
-}
-
-.footer-nav {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
-  font-size: 0.9rem;
-}
-.footer-nav a {
-  color: #333;
 }
 
 /* Lightbox */
