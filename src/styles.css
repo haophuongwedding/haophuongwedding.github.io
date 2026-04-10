@@ -1066,122 +1066,52 @@ input.wpcf7-submit.button {
   margin-top: 1rem;
 }
 
-/* --- Scroll reveals (Flatsome data-animate parity) --- */
-[data-animate]:not(.anim-in) {
+/* --- Scroll reveals (Flatsome-style CSS transitions) --- */
+
+/* Base hidden state */
+[data-animate] {
   opacity: 0;
   will-change: opacity, transform;
+  backface-visibility: hidden;
 }
+
+/* Initial offset per animation type — set BEFORE trigger so transition has a "from" value */
+[data-animate="fadeInDown"]  { transform: translate3d(0, -70px, 0); }
+[data-animate="fadeInUp"]    { transform: translate3d(0,  70px, 0); }
+[data-animate="fadeInLeft"]  { transform: translate3d(-70px, 0, 0); }
+[data-animate="fadeInRight"] { transform: translate3d( 70px, 0, 0); }
+[data-animate="bounceIn"]    { transform: scale(1.3); }
+[data-animate="bounceInUp"]    { transform: translate3d(0,  70px, 0); }
+[data-animate="bounceInDown"]  { transform: translate3d(0, -70px, 0); }
+[data-animate="bounceInLeft"]  { transform: translate3d(-300px, 0, 0); }
+[data-animate="bounceInRight"] { transform: translate3d( 300px, 0, 0); }
+
+/* Triggered state: fade* — opacity 0.7s, transform glides slowly 1.6s (Flatsome default) */
 [data-animate].anim-in {
-  animation-duration: 0.85s;
-  animation-fill-mode: both;
-  animation-timing-function: ease-out;
-}
-[data-animate].anim-in.anim-reduced {
-  animation: none;
   opacity: 1;
   transform: none;
+  transition:
+    opacity 0.7s ease-in,
+    transform 1.6s linear;
 }
 
-[data-animate].anim-in.fadeInDown {
-  animation-name: anim-fadeInDown;
-}
-[data-animate].anim-in.fadeInUp {
-  animation-name: anim-fadeInUp;
-}
-[data-animate].anim-in.fadeInLeft {
-  animation-name: anim-fadeInLeft;
-}
-[data-animate].anim-in.fadeInRight {
-  animation-name: anim-fadeInRight;
-}
-[data-animate].anim-in.bounceIn {
-  animation-name: anim-bounceIn;
-  animation-duration: 0.95s;
-}
-[data-animate].anim-in.bounceInUp {
-  animation-name: anim-bounceInUp;
-  animation-duration: 1s;
-}
-
-@keyframes anim-fadeInDown {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -36px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes anim-fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 36px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes anim-fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translate3d(-36px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes anim-fadeInRight {
-  from {
-    opacity: 0;
-    transform: translate3d(36px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes anim-bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale3d(0.35, 0.35, 1);
-  }
-  55% {
-    opacity: 1;
-    transform: scale3d(1.06, 1.06, 1);
-  }
-  75% {
-    transform: scale3d(0.92, 0.92, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-@keyframes anim-bounceInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 56px, 0) scale3d(0.85, 0.85, 1);
-  }
-  60% {
-    opacity: 1;
-    transform: translate3d(0, -8px, 0) scale3d(1.02, 1.02, 1);
-  }
-  80% {
-    transform: translate3d(0, 4px, 0) scale3d(0.99, 0.99, 1);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-  }
+/* Bounce types — shorter, elastic cubic-bezier overshoot (Flatsome bounce curve) */
+[data-animate="bounceIn"].anim-in,
+[data-animate="bounceInUp"].anim-in,
+[data-animate="bounceInDown"].anim-in,
+[data-animate="bounceInLeft"].anim-in,
+[data-animate="bounceInRight"].anim-in {
+  transition:
+    opacity 0.5s ease-in,
+    transform 0.8s cubic-bezier(0, 0.195, 0, 1.465);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-animate]:not(.anim-in) {
+  [data-animate] {
     opacity: 1;
     transform: none;
   }
   [data-animate].anim-in {
-    animation: none !important;
+    transition: none;
   }
 }
