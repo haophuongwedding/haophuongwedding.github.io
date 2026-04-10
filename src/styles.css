@@ -432,81 +432,84 @@ a {
   background: linear-gradient(180deg, #fdfcfa 0%, #f3efe6 100%);
 }
 
-/* Hai ảnh lớn: cùng khung 3:4 — outline thẳng hàng (ảnh crop trong khung) */
-.love-story-frame--main {
+/* Love-story PNG panels: keep full artwork (no crop) */
+.love-story-frame--panel {
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 3 / 4;
+  max-width: 320px;
 }
-
-.love-story-frame--main img {
+.love-story-frame--panel img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .love-row {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
     align-items: start;
     gap: 18px;
   }
   .love-mid {
     margin-top: 0;
   }
-  .love-story-frame--main {
-    max-width: none;
-    width: 100%;
-    max-height: min(70vh, 540px);
-    aspect-ratio: 3 / 4;
+  .love-story-frame--panel {
+    max-width: 360px;
   }
 }
 
-/* Cặp nhỏ countdown: cùng khung dọc, cùng chiều cao */
-.countdown-pair {
+/* Countdown sits under love story (not right column) */
+.countdown-section {
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding: 0 12px;
   display: flex;
-  gap: 10px;
   justify-content: center;
-  margin-bottom: 16px;
+}
+
+/* Countdown title image like sample */
+.wedding-countdown-title {
   width: 100%;
-  max-width: 280px;
-}
-
-.love-story-frame--countdown {
-  flex: 1 1 0;
-  min-width: 0;
-  aspect-ratio: 3 / 4;
-  max-width: 136px;
-}
-
-.love-story-frame--countdown img {
+  max-width: 360px;
+  margin: 6px auto 12px;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
 }
 
 /* --- Timer --- */
 #ux-timer {
+  margin: 12px 0 10px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+.countdown-box {
+  background: rgba(191, 161, 101, 0.9);
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+.countdown-num {
   font-size: 1.5rem;
-  margin: 16px 0;
+  line-height: 1.1;
+  font-weight: 700;
+}
+.countdown-label {
+  font-size: 0.85rem;
+  opacity: 0.95;
+  margin-top: 4px;
 }
 @media (min-width: 550px) {
-  #ux-timer {
-    font-size: 2.2rem;
+  .countdown-num {
+    font-size: 1.9rem;
   }
-}
-#ux-timer .countdown-inner {
-  display: inline-block;
-  padding: 12px 16px;
-  background: rgba(185, 150, 81, 0.645);
-  color: #fff;
-}
-#ux-timer strong {
-  margin: 0 4px;
 }
 
 .timer-block {

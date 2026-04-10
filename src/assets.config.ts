@@ -19,8 +19,8 @@ const PHOTO_GROOM_SOLO = `${W}/0X5A9140.webp`;
 const PHOTO_BRIDE_SOLO = `${W}/0X5A9133.webp`;
 
 /** Cặp Love story (2 ảnh bên trái / giữa, phía trên countdown). */
-const LOVE_PAIR_LEFT = `${W}/0X5A8923.webp`;
-const LOVE_PAIR_RIGHT = `${W}/0X5A9023.webp`;
+const LOVE_PAIR_LEFT = '/assets/events/love-story-Hao-Phuong-2.png';
+const LOVE_PAIR_RIGHT = '/assets/events/love-story-Hao-Phuong-1.png';
 
 /** Cặp cột countdown (bên phải, cạnh đồng hồ). */
 const COUNTDOWN_PAIR_LEFT = PHOTO_GROOM_SOLO;
@@ -114,6 +114,7 @@ export const weddingAssets = {
     dressCodeHeading: '/assets/events/dress-code-heading.png',
     dressCode: '/assets/events/dress-code.png',
     dividerBeforeLove: '/assets/events/divider-before-love.png',
+    weddingCountdown: '/assets/events/wedding-countdown.png',
   },
   loveStory: {
     storyLeft: LOVE_PAIR_LEFT,

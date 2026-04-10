@@ -17,12 +17,24 @@ export function initCountdown(root: HTMLElement): void {
     const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
     root.innerHTML = `
-      <span class="countdown-inner">
-        <strong>${days}</strong> ngày
-        <strong>${pad(hours)}</strong> giờ
-        <strong>${pad(mins)}</strong> phút
-        <strong>${pad(secs)}</strong> giây
-      </span>
+      <div class="countdown-grid" role="group" aria-label="Đếm ngược">
+        <div class="countdown-box">
+          <div class="countdown-num">${days}</div>
+          <div class="countdown-label">ngày</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num">${pad(hours)}</div>
+          <div class="countdown-label">giờ</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num">${pad(mins)}</div>
+          <div class="countdown-label">phút</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num">${pad(secs)}</div>
+          <div class="countdown-label">giây</div>
+        </div>
+      </div>
     `;
   };
 
