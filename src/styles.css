@@ -412,8 +412,8 @@ a {
 .love-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 1100px;
+  gap: 14px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 12px;
 }
@@ -435,7 +435,7 @@ a {
 /* Love-story PNG panels: keep full artwork (no crop) */
 .love-story-frame--panel {
   width: 100%;
-  max-width: 320px;
+  max-width: 198px;
 }
 .love-story-frame--panel img {
   display: block;
@@ -449,13 +449,13 @@ a {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: start;
-    gap: 18px;
+    gap: 16px;
   }
   .love-mid {
     margin-top: 0;
   }
   .love-story-frame--panel {
-    max-width: 360px;
+    max-width: 240px;
   }
 }
 
@@ -465,50 +465,60 @@ a {
   margin: 18px auto 0;
   padding: 0 12px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 /* Countdown title image like sample */
 .wedding-countdown-title {
   width: 100%;
   max-width: 360px;
-  margin: 6px auto 12px;
+  margin: 6px 0 12px auto; /* align title to the right */
   display: block;
 }
 
 /* --- Timer --- */
 #ux-timer {
   margin: 12px 0 10px;
+  width: 100%;
 }
 
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
   width: 100%;
-  max-width: 420px;
+  max-width: 100%;
+  margin-left: 0; /* align left edge with the line below */
 }
 .countdown-box {
-  background: rgba(191, 161, 101, 0.9);
+  background: rgba(191, 161, 101, 0.82);
   color: #fff;
-  border-radius: 6px;
-  padding: 12px 8px;
+  border-radius: 2px;
+  padding: 14px 10px;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  min-height: 58px;
+  display: grid;
+  align-content: center;
 }
 .countdown-num {
-  font-size: 1.5rem;
-  line-height: 1.1;
-  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 600;
 }
 .countdown-label {
-  font-size: 0.85rem;
-  opacity: 0.95;
-  margin-top: 4px;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-top: 6px;
 }
 @media (min-width: 550px) {
   .countdown-num {
-    font-size: 1.9rem;
+    font-size: 1.65rem;
+  }
+  .countdown-label {
+    font-size: 0.7rem;
   }
 }
 
@@ -517,19 +527,23 @@ a {
   padding: 0 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 980px;
 }
 
 .title-big-day {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  text-align: left !important; /* override .text-center in markup */
+  width: 100%;
 }
 @media (min-width: 550px) {
   .title-big-day {
-    font-size: 1.15rem;
+    font-size: 1.02rem;
   }
 }
 .title-big-day em {
-  font-size: 130%;
+  font-size: 100%;
 }
 
 /* --- Gallery --- */
