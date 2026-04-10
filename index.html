@@ -22,6 +22,19 @@
     />
   </head>
   <body>
+    <audio id="bg-music" preload="auto" loop playsinline>
+      <source src="/background_music.mp3" type="audio/mpeg" />
+    </audio>
+    <button
+      id="bg-music-toggle"
+      class="bg-music-toggle"
+      type="button"
+      aria-label="Bật/Tắt nhạc nền"
+      aria-pressed="false"
+    >
+      Nhạc: Tắt
+    </button>
+
     <div class="banner-hero banner-hero--desktop" role="img" aria-label="Ảnh bìa">
       <div class="banner-bg" aria-hidden="true"></div>
       <div class="effect-sparkle" aria-hidden="true"></div>
