@@ -38,6 +38,8 @@ export function initScrollAnimations(): void {
     return;
   }
 
+  const isMobile = typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 549px)').matches;
+
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -46,14 +48,16 @@ export function initScrollAnimations(): void {
         const name = el.dataset.animate;
         if (!name) continue;
         const delay = el.dataset.animDelay;
-        if (delay) el.style.animationDelay = delay;
+        // CSS transition-based animations use transitionDelay (not animationDelay)
+        if (delay) el.style.transitionDelay = delay;
         el.classList.add('anim-in', name);
         observer.unobserve(el);
       }
     },
     {
-      threshold: 0.08,
-      rootMargin: '0px 0px -6% 0px',
+      // Trigger as soon as element enters viewport — mirrors Flatsome Waypoint offset:101%
+      threshold: isMobile ? 0.04 : 0.08,
+      rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -4% 0px',
     }
   );
 

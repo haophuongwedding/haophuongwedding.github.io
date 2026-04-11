@@ -46,31 +46,33 @@
 
     <div class="container">
       <div class="invite-row">
-        <div class="invite-col invite-col-inner" data-animate="fadeInDown">
-          <div class="invite-inner-head">
+        <!-- Left column: monogram then cover photo, each animated separately -->
+        <div class="invite-col invite-col-inner">
+          <div class="invite-inner-head" data-animate="fadeInDown">
             <img class="img-chu" data-asset="invite.monogram" width="290" height="306" alt="" />
           </div>
-          <div class="invite-inner-photo">
+          <div class="invite-inner-photo" data-animate="fadeInDown" data-anim-delay="0.18s">
             <img class="cover-photo" data-asset="invite.coverPhoto" alt="" />
           </div>
         </div>
-        <div class="invite-col invite-col--right" data-animate="fadeInUp">
-          <img style="width: 88%; max-width: 904px" data-asset="invite.headlineBanner" alt="" />
-          <p class="text-center text-quy-khach" data-content="invite.guestSalutationHtml"></p>
-          <p class="text-center text-invite-bold" data-content="invite.partyInviteHtml"></p>
-          <img style="width: 100%; max-width: 83%" data-asset="invite.invitationDivider" alt="" />
-          <h5 class="text-center hotel-title" data-content="invite.venueTitleHtml"></h5>
-          <h5 class="text-center" data-content="invite.venueAddress"></h5>
-          <img style="width: 100%; max-width: 60%" data-asset="invite.venueIllustration" alt="" />
-          <p class="text-center" data-content="invite.lunarNote"></p>
-          <p class="text-center">
+        <!-- Right column: each element cascades in with staggered delay -->
+        <div class="invite-col invite-col--right">
+          <img data-animate="fadeInUp" style="width: 88%; max-width: 904px" data-asset="invite.headlineBanner" alt="" />
+          <p data-animate="fadeInUp" data-anim-delay="0.09s" class="text-center text-quy-khach" data-content="invite.guestSalutationHtml"></p>
+          <p data-animate="fadeInUp" data-anim-delay="0.17s" class="text-center text-invite-bold" data-content="invite.partyInviteHtml"></p>
+          <img data-animate="fadeInUp" data-anim-delay="0.25s" style="width: 100%; max-width: 83%" data-asset="invite.invitationDivider" alt="" />
+          <h5 data-animate="fadeInUp" data-anim-delay="0.32s" class="text-center hotel-title" data-content="invite.venueTitleHtml"></h5>
+          <h5 data-animate="fadeInUp" data-anim-delay="0.38s" class="text-center" data-content="invite.venueAddress"></h5>
+          <img data-animate="fadeInUp" data-anim-delay="0.44s" style="width: 100%; max-width: 60%" data-asset="invite.venueIllustration" alt="" />
+          <p data-animate="fadeInUp" data-anim-delay="0.5s" class="text-center" data-content="invite.lunarNote"></p>
+          <p data-animate="fadeInUp" data-anim-delay="0.55s" class="text-center">
             <a class="btn-map" href="https://maps.app.goo.gl/5Hb5kbhYZdHCNWXk7" target="_blank" rel="noopener"
               >Chỉ đường</a
             >
           </p>
-          <img class="time-line" style="width: 100%; max-width: 69%" data-asset="invite.receptionTimeline" alt="" />
-          <h5 class="text-center time-line" data-content="invite.timelineHtml"></h5>
-          <p class="text-center" style="margin-top: 8px" data-content="invite.weekdayNoteHtml"></p>
+          <img data-animate="fadeInUp" data-anim-delay="0.6s" class="time-line" style="width: 100%; max-width: 69%" data-asset="invite.receptionTimeline" alt="" />
+          <h5 data-animate="fadeInUp" data-anim-delay="0.65s" class="text-center time-line" data-content="invite.timelineHtml"></h5>
+          <p data-animate="fadeInUp" data-anim-delay="0.7s" class="text-center" style="margin-top: 8px" data-content="invite.weekdayNoteHtml"></p>
         </div>
       </div>
     </div>
@@ -87,7 +89,7 @@
             />
             <p data-content="couple.groomQuote"></p>
           </div>
-          <div class="col-center" data-animate="fadeInUp">
+          <div class="col-center" data-animate="fadeInUp" data-anim-delay="0.14s">
             <p class="text-center"><strong>NHÀ TRAI</strong></p>
             <p class="text-center" data-content="couple.groomParentsHtml"></p>
             <p class="text-center" style="font-size: 90%; margin-top: 6px" data-content="couple.groomAddress"></p>
@@ -96,7 +98,7 @@
             <p class="text-center" data-content="couple.brideParentsHtml"></p>
             <p class="text-center" style="font-size: 90%; margin-top: 6px" data-content="couple.brideAddress"></p>
           </div>
-          <div data-animate="fadeInRight">
+          <div data-animate="fadeInRight" data-anim-delay="0.14s">
             <img style="width: 81%; max-width: 500px" data-asset="couple.photoRight" alt="" />
             <img
               style="width: 63%; max-width: 396px; margin-top: 12px"
@@ -127,7 +129,7 @@
               alt=""
             />
           </div>
-          <div class="events-card text-center" data-animate="fadeInRight">
+          <div class="events-card text-center" data-animate="fadeInRight" data-anim-delay="0.12s">
             <img style="width: 69%; max-width: 450px" data-asset="events.dressCodeHeading" alt="" />
             <h5><span style="font-size: 120%">GỢI Ý</span></h5>
             <img style="width: 100%" data-asset="events.dressCode" alt="" />
@@ -145,7 +147,7 @@
             <img data-asset="loveStory.storyLeft" alt="" />
           </div>
         </div>
-        <div class="love-story-col love-mid" data-animate="fadeInUp">
+        <div class="love-story-col love-mid" data-animate="fadeInUp" data-anim-delay="0.14s">
           <div class="love-story-frame love-story-frame--panel">
             <img data-asset="loveStory.storyCenter" alt="" />
           </div>

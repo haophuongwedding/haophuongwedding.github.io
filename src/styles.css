@@ -1066,6 +1066,22 @@ input.wpcf7-submit.button {
   margin-top: 1rem;
 }
 
+/* --- Hero banner page-load fade-in (matches sample site bg-loaded effect) --- */
+.banner-hero {
+  animation: banner-fade-in 1.1s ease both;
+}
+.banner-hero--mobile {
+  animation-delay: 0.05s;
+}
+@keyframes banner-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* --- Scroll reveals (Flatsome-style CSS transitions) --- */
 
 /* Base hidden state */
@@ -1075,38 +1091,54 @@ input.wpcf7-submit.button {
   backface-visibility: hidden;
 }
 
-/* Initial offset per animation type — set BEFORE trigger so transition has a "from" value */
-[data-animate="fadeInDown"]  { transform: translate3d(0, -70px, 0); }
-[data-animate="fadeInUp"]    { transform: translate3d(0,  70px, 0); }
-[data-animate="fadeInLeft"]  { transform: translate3d(-70px, 0, 0); }
-[data-animate="fadeInRight"] { transform: translate3d( 70px, 0, 0); }
-[data-animate="bounceIn"]    { transform: scale(1.3); }
-[data-animate="bounceInUp"]    { transform: translate3d(0,  70px, 0); }
-[data-animate="bounceInDown"]  { transform: translate3d(0, -70px, 0); }
-[data-animate="bounceInLeft"]  { transform: translate3d(-300px, 0, 0); }
-[data-animate="bounceInRight"] { transform: translate3d( 300px, 0, 0); }
+/* Initial offset per animation type — desktop distances */
+[data-animate="fadeInDown"]   { transform: translate3d(0, -60px, 0); }
+[data-animate="fadeInUp"]     { transform: translate3d(0,  60px, 0); }
+[data-animate="fadeInLeft"]   { transform: translate3d(-60px, 0, 0); }
+[data-animate="fadeInRight"]  { transform: translate3d( 60px, 0, 0); }
+[data-animate="bounceIn"]     { transform: scale(0.75); }
+[data-animate="bounceInUp"]   { transform: translate3d(0,  60px, 0); }
+[data-animate="bounceInDown"] { transform: translate3d(0, -60px, 0); }
+[data-animate="bounceInLeft"] { transform: translate3d(-200px, 0, 0); }
+[data-animate="bounceInRight"]{ transform: translate3d( 200px, 0, 0); }
 
-/* Triggered state: fade* — opacity 0.7s, transform glides slowly 1.6s (Flatsome default) */
+/* Mobile: tighter offsets so animation feels natural on small screens */
+@media (max-width: 549px) {
+  [data-animate="fadeInDown"]   { transform: translate3d(0, -36px, 0); }
+  [data-animate="fadeInUp"]     { transform: translate3d(0,  36px, 0); }
+  [data-animate="fadeInLeft"]   { transform: translate3d(-36px, 0, 0); }
+  [data-animate="fadeInRight"]  { transform: translate3d( 36px, 0, 0); }
+  [data-animate="bounceIn"]     { transform: scale(0.82); }
+  [data-animate="bounceInUp"]   { transform: translate3d(0,  36px, 0); }
+  [data-animate="bounceInDown"] { transform: translate3d(0, -36px, 0); }
+  [data-animate="bounceInLeft"] { transform: translate3d(-100px, 0, 0); }
+  [data-animate="bounceInRight"]{ transform: translate3d( 100px, 0, 0); }
+}
+
+/* Triggered state: ease-out-quint so the slide decelerates naturally (not linear) */
 [data-animate].anim-in {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.7s ease-in,
-    transform 1.6s linear;
+    opacity 0.55s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Bounce types — shorter, elastic cubic-bezier overshoot (Flatsome bounce curve) */
+/* Bounce types — spring overshoot cubic-bezier */
 [data-animate="bounceIn"].anim-in,
 [data-animate="bounceInUp"].anim-in,
 [data-animate="bounceInDown"].anim-in,
 [data-animate="bounceInLeft"].anim-in,
 [data-animate="bounceInRight"].anim-in {
   transition:
-    opacity 0.5s ease-in,
-    transform 0.8s cubic-bezier(0, 0.195, 0, 1.465);
+    opacity 0.4s ease,
+    transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .banner-hero {
+    animation: none;
+  }
   [data-animate] {
     opacity: 1;
     transform: none;
