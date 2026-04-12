@@ -758,15 +758,28 @@ a {
 .invite-col--right .img-invite-headline {
   margin-bottom: clamp(0.18rem, 1.4vw, 0.42rem);
 }
-/* Ornamental divider (wide PNG) — tune width here; venue + timeline share band below */
-.invite-col--right .img-invite-divider {
-  display: block;
-  margin: 0 auto;
+/* Ornamental divider — scale via --invite-divider-scale; margin matches extra paint below layout box (origin: center top). */
+.invite-col--right .invite-divider-frame {
+  --invite-divider-scale: 1.1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-bottom: clamp(0.28rem, 2vw, 0.62rem);
+  overflow: visible;
+}
+.invite-col--right .invite-divider-frame .img-invite-divider {
+  display: block;
   height: auto;
   width: clamp(220px, 98%, 920px);
   max-width: 100%;
   object-fit: contain;
+  transform: scale(var(--invite-divider-scale));
+  transform-origin: center top;
+  /* 768/1376 = invitation-divider.png height/width; (scale - 1) = fraction of height that extends below the layout box. */
+  margin-bottom: max(
+    0px,
+    calc(100% * 768 / 1376 * (var(--invite-divider-scale) - 1))
+  );
 }
 .invite-col--right .img-venue-illustration,
 .invite-col--right .img-reception-timeline {
