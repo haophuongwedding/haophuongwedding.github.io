@@ -624,12 +624,13 @@ a {
   }
 }
 
-/* --- Love story (outline giống mẫu thiệp: viền vàng, khung dọc đồng bộ) --- */
+/* --- Love story: full-width panels, no frame box (sample-style open layout) --- */
 .love-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  max-width: 860px;
+  /* No row/column gap — stacked mobile panels must meet so timeline line reads continuous */
+  gap: 0;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 12px;
 }
@@ -640,25 +641,35 @@ a {
   align-items: center;
 }
 
+/* Wrapper only — never draw a box (any gold frame on photos comes from the PNG art, not CSS) */
 .love-story-frame {
-  overflow: hidden;
-  border-radius: 12px;
-  border: 2px solid var(--btn-gold);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
-  background: linear-gradient(180deg, #fdfcfa 0%, #f3efe6 100%);
+  overflow: visible;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
 }
 
-/* Love-story PNG panels: keep full artwork (no crop) */
+/* Timeline infographic PNGs: full width of column; panels butt together */
 .love-story-frame--panel {
-  /* clamp: never < 200px, fills 72% of column, never > 280px.
-     On 375px mobile this renders ~235px — large enough to read the infographic. */
-  width: clamp(200px, 72%, 280px);
+  width: min(100%, 520px);
 }
 .love-story-frame--panel img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  /* Pull second half up over common transparent padding so the gold spine reads more continuous */
+  .love-story-col.love-mid {
+    margin-top: -14px;
+  }
+  .text-center.mt-1:has(.img-divider-love) + .love-row {
+    margin-top: -8px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -666,14 +677,18 @@ a {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: start;
-    gap: 16px;
+    /* Zero gap so center timeline strokes from left/right PNG line up as one vertical */
+    gap: 0;
   }
   .love-mid {
     margin-top: 0;
   }
+  .love-story-col {
+    align-items: stretch;
+  }
   .love-story-frame--panel {
     width: 100%;
-    max-width: 240px;
+    max-width: none;
   }
 }
 
@@ -699,7 +714,8 @@ a {
   display: block;
   margin: 0 auto;
   height: auto;
-  width: clamp(100px, 55%, 440px);
+  /* Title art: narrower than full content — closer to sample (~55–65% feel + side air) */
+  width: clamp(118px, 62%, 520px);
 }
 .img-title-ribbon {
   display: block;
