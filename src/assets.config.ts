@@ -11,8 +11,11 @@ const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 
 const W = '/assets/my_wedding/wedding';
 
-/** Top banner + nền section cặp đôi (ảnh ngang). */
+/** Top banner (ảnh ngang). */
 const HERO_IMAGE = `${W}/0X5A9121.webp`;
+
+/** Nền section cặp đôi (NHÀ TRAI / NHÀ GÁI) — ảnh nhẫn mờ như mẫu thiệp. */
+const COUPLE_SECTION_BG = '/assets/shared/silver_ring_background.jpg';
 
 /** Ảnh đơn nhà trai / nhà gái (section tối giữa). */
 const PHOTO_GROOM_SOLO = `${W}/0X5A9140.webp`;
@@ -100,7 +103,7 @@ export const weddingAssets = {
     receptionTimeline: '/assets/invite/reception-timeline.png',
   },
   couple: {
-    sectionBg: HERO_IMAGE,
+    sectionBg: COUPLE_SECTION_BG,
     photoLeft: PHOTO_GROOM_SOLO,
     captionLeft: '/assets/couple/caption-left.png',
     familyEmblem: '/assets/couple/family-emblem.png',

@@ -28,8 +28,7 @@ export function applyWeddingContent(): void {
   });
 
   const mapBtn = document.querySelector<HTMLAnchorElement>('a.btn-map');
-  if (mapBtn) {
-    mapBtn.href = invite.mapUrl;
-    mapBtn.textContent = invite.mapButtonLabel;
-  }
+  const mapLabel = mapBtn?.querySelector<HTMLSpanElement>('.btn-map__text');
+  if (mapBtn) mapBtn.href = invite.mapUrl;
+  if (mapLabel) mapLabel.textContent = invite.mapButtonLabel;
 }

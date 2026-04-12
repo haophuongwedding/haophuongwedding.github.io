@@ -381,19 +381,45 @@ a {
   color: var(--accent);
 }
 
+/* Âm lịch — giống mẫu: HOA to, cỡ chữ lớn hơn */
+.invite-lunar-note {
+  margin: 10px 12px 6px;
+  font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
 .btn-map {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
+  justify-content: center;
+  gap: 10px;
+  min-width: min(100%, 17.5rem);
+  padding: 12px 36px;
   border-radius: 99px;
   background: var(--btn-gold);
   color: #fff !important;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: clamp(0.88rem, 3.2vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   border: none;
   cursor: pointer;
   margin: 12px 0;
+  box-sizing: border-box;
+}
+
+.btn-map__text {
+  flex-shrink: 0;
+}
+
+.btn-map__icon {
+  flex-shrink: 0;
+  display: block;
+  margin-top: 1px;
 }
 
 .time-line {

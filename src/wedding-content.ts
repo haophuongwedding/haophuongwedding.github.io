@@ -19,11 +19,10 @@ export const weddingContent = {
     venueTitleHtml:
       '<strong><span style="font-size: 80%">TẠI</span><br /><span class="hotel-name">TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI ROYAL KING</span><br /></strong>',
     venueAddress: '53 Nguyễn Hữu Cảnh, Phường Đồng Hới, Tỉnh Quảng Trị',
-    lunarNote:
-      '<span style="font-size: 80%">(Nhằm ngày 28 tháng 02 năm Bính Ngọ)</span>',
+    lunarNote: '(NHẰM NGÀY 28 THÁNG 02 NĂM BÍNH NGỌ)',
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=53+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+%C4%90%E1%BB%93ng+H%E1%BB%9Bi+Qu%E1%BA%A3ng+B%C3%ACnh',
-    mapButtonLabel: 'Chỉ đường',
+    mapButtonLabel: 'CHỈ ĐƯỜNG',
     timelineHtml: 'ĐÓN KHÁCH: 10H30<br />KHAI TIỆC: 11H00',
   },
 
