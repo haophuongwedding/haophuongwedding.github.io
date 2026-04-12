@@ -1,13 +1,12 @@
 /**
  * Single place for media paths. `index.html` uses `data-asset="section.key"` only.
  *
- * Reserved paths are excluded from auto grid `G`. `0X5A9145.JPG` is omitted from
- * `MY_WEDDING_DAY` (not used on site). Vertical pool order is seeded-shuffle — change
- * `GALLERY_SHUFFLE_SEED` to reshuffle. Wedding Moments adds horizontal WebPs from
- * `my_wedding/wedding/horizontal/` in a mosaic + tail grid (see `buildWeddingMomentsGallery`).
+ * Reserved paths are excluded from auto grid `G`. `MY_WEDDING_DAY` lists vertical WebPs under
+ * `my_wedding/wedding/vertical/` (hero, invite, RSVP side photo, etc.).
  *
- * Vertical photos live in `my_wedding/wedding/vertical/`. `MY_WEDDING_DAY` is alphabetical —
- * edit when you add/remove wedding WebPs there.
+ * **Wedding Moments** (`weddingAssets.gallery`) uses only JPGs in `public/assets/gallary/vertical`
+ * and `.../gallary/horizontal` — edit those arrays when you add/remove files there. Vertical slot
+ * order is seeded-shuffle; change `GALLERY_SHUFFLE_SEED` to reshuffle.
  */
 const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 
@@ -93,18 +92,40 @@ const RESERVED_PHOTOS = new Set<string>([
 const G_RAW = MY_WEDDING_DAY.filter((p) => !RESERVED_PHOTOS.has(p));
 const G_ORDERED = seededShuffle(G_RAW, GALLERY_SHUFFLE_SEED);
 
-/** Ảnh ngang — `public/assets/my_wedding/wedding/horizontal/` (WebP; regenerate via `npm run optimize:wedding:webp` with `DIR=.../horizontal`). */
-const WH = `${W}/horizontal`;
-const HORIZONTAL_WEDDING = [
-  `${WH}/11698501721533845791.webp`,
-  `${WH}/11698501721533845792.webp`,
-  `${WH}/12074270121294467798.webp`,
-  `${WH}/15147675052624050563.webp`,
-  `${WH}/22092970071342852746.webp`,
-  `${WH}/32593982228853853327.webp`,
-  `${WH}/3341461635211508678.webp`,
-  `${WH}/8078611452008581715.webp`,
-  `${WH}/9391290337559862384.webp`,
+/** Wedding Moments only — `public/assets/gallary/{vertical,horizontal}/` (see folder names). */
+const GALL = '/assets/gallary';
+const GV = `${GALL}/vertical`;
+const GH = `${GALL}/horizontal`;
+
+const GALLARY_VERTICAL = [
+  `${GV}/13275572914919946396.jpg`,
+  `${GV}/13275572914919946397.jpg`,
+  `${GV}/14694617650096014111.jpg`,
+  `${GV}/14694617650096014113.jpg`,
+  `${GV}/15348085452160349274.jpg`,
+  `${GV}/15348085452160349275.jpg`,
+  `${GV}/189966359786027819717.jpg`,
+  `${GV}/22445109688673196812.jpg`,
+  `${GV}/22445109688673196813.jpg`,
+  `${GV}/24790753506024261310.jpg`,
+  `${GV}/24790753506024261311.jpg`,
+  `${GV}/2479075350602426138.jpg`,
+  `${GV}/2479075350602426139.jpg`,
+  `${GV}/419746622512118428814.jpg`,
+  `${GV}/46866694797244361615.jpg`,
+  `${GV}/46866694797244361616.jpg`,
+].sort((a, b) => a.localeCompare(b));
+
+const GALLARY_HORIZONTAL = [
+  `${GH}/116985017215338457918.jpg`,
+  `${GH}/116985017215338457919.jpg`,
+  `${GH}/120742701212944677925.jpg`,
+  `${GH}/14694617650096014112.jpg`,
+  `${GH}/151476750526240505620.jpg`,
+  `${GH}/220929700713428527423.jpg`,
+  `${GH}/325939822288538533224.jpg`,
+  `${GH}/80786114520085817122.jpg`,
+  `${GH}/93912903375598623821.jpg`,
 ].sort((a, b) => a.localeCompare(b));
 
 /** Ảnh ngang thứ hai ở cuối lưới (cùng hàng với `h[8]`) — ổn định theo seed, không trùng `exclude`. */
@@ -119,8 +140,8 @@ function pickHorizontalExcluding(pool: readonly string[], exclude: string, seed:
  * Thứ tự flatten = thứ tự `data-gallery-index` trong HTML.
  */
 function buildWeddingMomentsGallery(): string[] {
-  const v = G_ORDERED;
-  const h = HORIZONTAL_WEDDING;
+  const v = seededShuffle([...GALLARY_VERTICAL], GALLERY_SHUFFLE_SEED);
+  const h = GALLARY_HORIZONTAL;
   const mosaic: string[] = [
     v[0]!,
     h[0]!,
