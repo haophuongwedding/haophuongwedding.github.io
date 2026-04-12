@@ -36,7 +36,7 @@ export const weddingContent = {
   },
 
   loveStory: {
-    bigDayLineHtml: '<em><strong>Ngày trọng đại của Hoàng Văn Hào &amp; Nguyễn Thảo Phương</strong></em>',
+    bigDayLineHtml: '<em><strong>Ngày trọng đại của Văn Hào & Thảo Phương</strong></em>',
   },
 
   /** Hiển thị trong popup “Gửi quà cưới” — STK/NH đồng bộ với nội dung hiển thị */
