@@ -307,10 +307,11 @@ a {
 }
 
 .img-chu {
-  width: 44%;
+  /* Single-column layout: monogram reads larger (closer to reference thiệp mẫu) */
+  width: min(60%, 400px);
   margin: 0 auto;
 }
-@media (min-width: 550px) {
+@media (min-width: 850px) {
   .img-chu {
     width: 39%;
   }
@@ -323,15 +324,19 @@ a {
   object-position: center top;
   display: block;
 }
-/* On mobile the cover photo appears as a standalone portrait below the invitation
-   text. Cap the max-width so it doesn't stretch edge-to-edge and add a touch of
-   border-radius for a "card photo" look matching the sample site. */
-@media (max-width: 549px) {
+/* Single-column: full-bleed portrait (no inset “card” frame) like reference mẫu */
+@media (max-width: 849px) {
+  .invite-inner-photo {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
   .cover-photo {
-    max-width: 320px;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 @media (min-width: 850px) {
