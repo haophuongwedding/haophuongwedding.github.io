@@ -2,6 +2,19 @@
  * Flatsome-style scroll reveals: elements with [data-animate] get class .anim-in + animation name when visible.
  * Gallery animation order matches the Thiệp Cưới Online sample page markup.
  */
+/** Seconds added to every scroll-reveal transition-delay (and default when unset). */
+const EXTRA_TRANSITION_DELAY_SEC = 0.5;
+
+function transitionDelayWithExtra(raw: string | undefined, extraSec: number): string {
+  if (!raw?.trim()) return `${extraSec}s`;
+  const t = raw.trim();
+  const ms = t.match(/^([\d.]+)\s*ms$/i);
+  if (ms) return `${parseFloat(ms[1]!) + extraSec * 1000}ms`;
+  const s = t.match(/^([\d.]+)\s*s$/i);
+  if (s) return `${parseFloat(s[1]!) + extraSec}s`;
+  return t;
+}
+
 const GALLERY_SEQUENCE = [
   'fadeInLeft',
   'bounceIn',
@@ -58,7 +71,7 @@ export function initScrollAnimations(): void {
         if (!name) continue;
         const delay = el.dataset.animDelay;
         // CSS transition-based animations use transitionDelay (not animationDelay)
-        if (delay) el.style.transitionDelay = delay;
+        el.style.transitionDelay = transitionDelayWithExtra(delay, EXTRA_TRANSITION_DELAY_SEC);
         el.classList.add('anim-in', name);
         observer.unobserve(el);
       }
@@ -66,7 +79,7 @@ export function initScrollAnimations(): void {
     {
       // Mobile: shrink effective viewport by 80px at bottom so animation fires
       // when element is solidly in view — mirrors Flatsome Waypoint "offset: 80px".
-      // Without this, the 1.5s transition completes while the element is still
+      // Without this, the long transform transition completes while the element is still
       // at the screen edge and the user never sees the movement (looks "static").
       threshold: isMobile ? 0.10 : 0.08,
       rootMargin: isMobile ? '0px 0px -80px 0px' : '0px 0px -4% 0px',
