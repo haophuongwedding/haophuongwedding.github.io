@@ -66,8 +66,8 @@ const GV = `${GALL}/vertical`;
 const GH = `${GALL}/horizontal`;
 
 /**
- * Wedding Moments: mosaic (12 ô: 4 dọc + 8 ngang theo `index.html`) + lưới đuôi (13 ô) = 25 ảnh.
- * Thứ tự xen kẽ chủ đề (Huế / studio / vest / solo) để hai ảnh liền nhau ít trùng “vibe”.
+ * Wedding Moments: mosaic (12 ô) + đuôi: 10 ô lưới + 1 hàng `gallery-tail-trio` (1 dọc + 2 ngang) = 25 ảnh.
+ * Ảnh 24 lặp `couple_hue_aodai_walk_1`; bố cục trio trong `index.html`.
  */
 const WEDDING_MOMENTS_GALLERY: string[] = [
   `${GV}/couple_studio_save_the_date_banner.jpg`,
@@ -78,7 +78,6 @@ const WEDDING_MOMENTS_GALLERY: string[] = [
   `${GV}/wife_studio_whitedress_stand_1.jpg`,
   `${GV}/couple_studio_grayvest_standkiss.jpg`,
   `${GH}/couple_hue_aodai_stand_6.jpg`,
-  `${GH}/couple_hue_aodai_stand_2.jpg`,
   `${GH}/couple_hue_aodai_stand_4.jpg`,
   `${GH}/couple_hue_aodai_stand_3.jpg`,
   `${GV}/couple_studio_blackvest_standkiss.jpg`,
@@ -95,6 +94,7 @@ const WEDDING_MOMENTS_GALLERY: string[] = [
   `${GV}/wife_studio_whitedress_stand_2.jpg`,
   `${GV}/couple_studio_whitedress_blackvest_stand_3.jpg`,
   `${GH}/couple_hue_aodai_stand_5.jpg`,
+  `${GH}/couple_hue_aodai_walk_1.jpg`,
 ];
 
 if (import.meta.env?.DEV && WEDDING_MOMENTS_GALLERY.length !== 25) {
