@@ -736,18 +736,38 @@ a {
   width: clamp(140px, 65%, 460px);
 }
 
-/* Invite section images */
+/* Invite section images — name art fills the text band (like thiệp mẫu); small phones bleed past col padding like cover photo */
+.invite-headline-frame {
+  width: 100%;
+}
+@media (max-width: 549px) {
+  .invite-col--right .invite-headline-frame {
+    width: calc(100% + 2 * var(--invite-pad-x));
+    max-width: none;
+    margin-left: calc(-1 * var(--invite-pad-x));
+    margin-right: calc(-1 * var(--invite-pad-x));
+  }
+}
 .img-invite-headline {
   display: block;
   margin: 0 auto;
   height: auto;
-  width: clamp(200px, 94%, 904px);
+  width: clamp(200px, 80%, 860px);
+  max-width: 100%;
 }
 .invite-col--right .img-invite-headline {
   margin-bottom: clamp(0.18rem, 1.4vw, 0.42rem);
 }
-/* Divider, venue art, timeline — use most of the text column; high max so mobile isn’t capped too narrow */
-.invite-col--right .img-invite-divider,
+/* Ornamental divider (wide PNG) — tune width here; venue + timeline share band below */
+.invite-col--right .img-invite-divider {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: clamp(0.28rem, 2vw, 0.62rem);
+  height: auto;
+  width: clamp(220px, 98%, 920px);
+  max-width: 100%;
+  object-fit: contain;
+}
 .invite-col--right .img-venue-illustration,
 .invite-col--right .img-reception-timeline {
   display: block;
@@ -756,9 +776,6 @@ a {
   width: clamp(160px, 97%, 920px);
   max-width: 100%;
   object-fit: contain;
-}
-.invite-col--right .img-invite-divider {
-  margin-bottom: clamp(0.28rem, 2vw, 0.62rem);
 }
 
 /* Couple section images */
