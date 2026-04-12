@@ -2,3 +2,6 @@ node_modules
 dist
 .DS_Store
 .frames
+
+# Terminal Paste Image folder
+.cp-images/

@@ -16,6 +16,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Clip at the root/viewport level — required on iOS Safari where the viewport
+     scroll container is <html>, not <body>. Without this, off-screen translateX
+     initial states (scroll-reveal elements) expand the scroll area rightward and
+     shift all page content left, creating white space on the right. */
+  overflow-x: hidden;
 }
 
 body {
@@ -24,6 +29,8 @@ body {
   color: var(--text-dark);
   background: #fff;
   line-height: 1.6;
+  overflow-x: hidden;   /* belt-and-suspenders with html rule above */
+  max-width: 100%;      /* prevent body from ever exceeding viewport width */
 }
 
 .bg-music-toggle {
@@ -102,7 +109,8 @@ a {
 }
 .banner-hero--mobile .banner-bg {
   background-image: var(--wedding-hero-mobile);
-  background-position: center top;
+  /* 35%: bride face ~20-25%, groom face ~50-55% of image width → center on both */
+  background-position: 35% top;
 }
 /* Sparkle / bokeh overlay — matches visible “white dots” on hero in reference recording */
 .effect-sparkle {
@@ -186,7 +194,8 @@ a {
   }
   .banner-hero--mobile {
     display: block;
-    min-height: 70vh;
+    /* 62vh: shorter than before so the invitation card is visible above the fold */
+    min-height: 62vh;
   }
 }
 @media (min-width: 550px) {
@@ -209,10 +218,32 @@ a {
   }
 }
 
+/*
+ * Mobile: show the invitation TEXT column (headline-banner, venue, etc.)
+ * BEFORE the photo column (monogram + cover photo).
+ * The left col is first in DOM but on mobile it should render second.
+ */
+@media (max-width: 849px) {
+  .invite-col--right  { order: -1; } /* text + headline: render first  */
+  .invite-col-inner   { order:  1; } /* monogram + photo: render second */
+}
+
 .invite-col {
   padding: 24px 16px;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 549px) {
+  /* On small mobile the right col (invitation text, now rendered first) gets
+     slightly tighter horizontal padding to give images more breathing room. */
+  .invite-col--right {
+    padding: 20px 10px 24px;
+  }
+  /* Photo col (second on mobile) — reduce top padding, no shadow duplication */
+  .invite-col-inner {
+    padding-top: 16px;
+    padding-bottom: 28px;
+  }
 }
 @media (min-width: 550px) {
   .invite-col--right {
@@ -223,6 +254,13 @@ a {
 
 .invite-col-inner {
   background: var(--cream);
+}
+/* On mobile the photo col appears second; add a hair-line gold divider above it
+   to visually connect the two sections into one invitation card. */
+@media (max-width: 849px) {
+  .invite-col-inner {
+    border-top: 1px solid rgba(191, 161, 101, 0.35);
+  }
 }
 
 /* Desktop: cột trái full chiều cao hàng grid; ảnh bìa giãn theo chiều dọc để cân cột phải (như mẫu) */
@@ -239,6 +277,12 @@ a {
   flex-shrink: 0;
   padding-top: 24px;
   width: 100%;
+}
+@media (max-width: 849px) {
+  /* The col already has 24px top-padding; avoid doubling it on mobile */
+  .invite-inner-head {
+    padding-top: 0;
+  }
 }
 @media (min-width: 850px) {
   .invite-inner-head {
@@ -263,7 +307,7 @@ a {
 }
 
 .img-chu {
-  width: 51%;
+  width: 44%;
   margin: 0 auto;
 }
 @media (min-width: 550px) {
@@ -278,6 +322,17 @@ a {
   object-fit: cover;
   object-position: center top;
   display: block;
+}
+/* On mobile the cover photo appears as a standalone portrait below the invitation
+   text. Cap the max-width so it doesn't stretch edge-to-edge and add a touch of
+   border-radius for a "card photo" look matching the sample site. */
+@media (max-width: 549px) {
+  .cover-photo {
+    max-width: 320px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  }
 }
 @media (min-width: 850px) {
   .invite-inner-photo .cover-photo {
@@ -389,10 +444,10 @@ a {
   text-align: justify;
   hyphens: auto;
 }
-@media (min-width: 850px) {
-  .couple-grid .col-center p {
-    text-align: center;
-  }
+/* Center column is always centered — on mobile too, not just desktop */
+.couple-grid .col-center p {
+  text-align: center;
+  hyphens: none;
 }
 
 /* --- Events / GỢI Ý --- */
@@ -462,8 +517,9 @@ a {
 
 /* Love-story PNG panels: keep full artwork (no crop) */
 .love-story-frame--panel {
-  width: 100%;
-  max-width: 198px;
+  /* clamp: never < 200px, fills 72% of column, never > 280px.
+     On 375px mobile this renders ~235px — large enough to read the infographic. */
+  width: clamp(200px, 72%, 280px);
 }
 .love-story-frame--panel img {
   display: block;
@@ -483,8 +539,114 @@ a {
     margin-top: 0;
   }
   .love-story-frame--panel {
+    width: 100%;
     max-width: 240px;
   }
+}
+
+/* --- Section / heading title images: responsive via clamp() ---
+   Replaces the old inline style="width:X%; max-width:Ypx" attributes.
+   clamp(floor, preferred%, ceiling):
+     • preferred % is of the containing block, so it naturally grows on wider screens
+     • floor keeps the image readable on very narrow screens
+     • ceiling prevents it from getting huge on desktop                        */
+.img-title-events-banner {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(160px, 65%, 620px);
+}
+.img-title-dresscode {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(150px, 80%, 450px);
+}
+.img-divider-love {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(100px, 55%, 440px);
+}
+.img-title-ribbon {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(130px, 65%, 440px);
+}
+.img-title-attending {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(140px, 65%, 560px);
+}
+.img-title-wishes {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(140px, 65%, 460px);
+}
+.img-title-gift {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(130px, 65%, 460px);
+}
+
+/* Invite section images */
+.img-invite-headline {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(200px, 88%, 904px);
+}
+.img-invite-divider {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(120px, 83%, 100%);
+}
+.img-venue-illustration {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(100px, 60%, 100%);
+}
+.img-reception-timeline {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: clamp(120px, 69%, 100%);
+}
+
+/* Couple section images */
+.img-couple-photo {
+  height: auto;
+  width: clamp(120px, 81%, 500px);
+}
+.img-couple-caption {
+  height: auto;
+  width: clamp(100px, 63%, 396px);
+  margin-top: 12px;
+}
+.img-couple-emblem {
+  height: auto;
+  width: clamp(90px, 54%, 481px);
+}
+
+/* Events program (mobile variant) */
+.img-program-mobile {
+  display: block;
+  margin: 12px auto 0;
+  height: auto;
+  width: clamp(160px, 76%, 540px);
+}
+
+/* Thanks / gift accent */
+.img-thanks-accent {
+  width: clamp(110px, 55%, 450px);
+  height: auto;
+  margin-top: 16px;
 }
 
 /* Countdown sits under love story (not right column) */
@@ -498,10 +660,11 @@ a {
 
 /* Countdown title image like sample */
 .wedding-countdown-title {
-  width: 100%;
-  max-width: 360px;
+  /* clamp: 65% of timer-block width (≈213px on 375px phone), capped at 360px on desktop */
+  width: clamp(140px, 65%, 360px);
   margin: 6px 0 12px auto; /* align title to the right */
   display: block;
+  height: auto;
 }
 
 /* --- Timer --- */
@@ -1102,17 +1265,17 @@ input.wpcf7-submit.button {
 [data-animate="bounceInLeft"] { transform: translate3d(-200px, 0, 0); }
 [data-animate="bounceInRight"]{ transform: translate3d( 200px, 0, 0); }
 
-/* Mobile: tighter offsets so animation feels natural on small screens */
+/* Mobile: larger offsets so the slide movement is clearly visible on screen */
 @media (max-width: 549px) {
-  [data-animate="fadeInDown"]   { transform: translate3d(0, -36px, 0); }
-  [data-animate="fadeInUp"]     { transform: translate3d(0,  36px, 0); }
-  [data-animate="fadeInLeft"]   { transform: translate3d(-36px, 0, 0); }
-  [data-animate="fadeInRight"]  { transform: translate3d( 36px, 0, 0); }
-  [data-animate="bounceIn"]     { transform: scale(0.82); }
-  [data-animate="bounceInUp"]   { transform: translate3d(0,  36px, 0); }
-  [data-animate="bounceInDown"] { transform: translate3d(0, -36px, 0); }
-  [data-animate="bounceInLeft"] { transform: translate3d(-100px, 0, 0); }
-  [data-animate="bounceInRight"]{ transform: translate3d( 100px, 0, 0); }
+  [data-animate="fadeInDown"]   { transform: translate3d(0, -55px, 0); }
+  [data-animate="fadeInUp"]     { transform: translate3d(0,  55px, 0); }
+  [data-animate="fadeInLeft"]   { transform: translate3d(-55px, 0, 0); }
+  [data-animate="fadeInRight"]  { transform: translate3d( 55px, 0, 0); }
+  [data-animate="bounceIn"]     { transform: scale(0.78); }
+  [data-animate="bounceInUp"]   { transform: translate3d(0,  55px, 0); }
+  [data-animate="bounceInDown"] { transform: translate3d(0, -55px, 0); }
+  [data-animate="bounceInLeft"] { transform: translate3d(-120px, 0, 0); }
+  [data-animate="bounceInRight"]{ transform: translate3d( 120px, 0, 0); }
 }
 
 /* Triggered state: ease-out-quint so the slide decelerates naturally (not linear) */
@@ -1133,6 +1296,25 @@ input.wpcf7-submit.button {
   transition:
     opacity 0.4s ease,
     transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Mobile: slower, more dramatic transitions so each element's entrance is clearly
+   visible while the user's eye is on it (matches the sample site's Flatsome pacing) */
+@media (max-width: 549px) {
+  [data-animate].anim-in {
+    transition:
+      opacity 0.9s ease,
+      transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-animate="bounceIn"].anim-in,
+  [data-animate="bounceInUp"].anim-in,
+  [data-animate="bounceInDown"].anim-in,
+  [data-animate="bounceInLeft"].anim-in,
+  [data-animate="bounceInRight"].anim-in {
+    transition:
+      opacity 0.8s ease,
+      transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
