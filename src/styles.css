@@ -194,8 +194,14 @@ a {
   }
   .banner-hero--mobile {
     display: block;
-    /* 62vh: shorter than before so the invitation card is visible above the fold */
+    /* cover + short min-height cropped portrait heroes; contain shows full art (letterbox if needed) */
     min-height: 62vh;
+    background: var(--cream);
+  }
+  .banner-hero--mobile .banner-bg {
+    /* cover crops portrait heroes on phones; contain shows the full image like a framed print */
+    background-size: contain;
+    background-position: center top;
   }
 }
 @media (min-width: 550px) {
@@ -1052,6 +1058,15 @@ a {
 }
 
 /* --- RSVP --- */
+/* Đoạn mời trước form (.rsvp-attending-invite-quote): 100 = cỡ chữ kế thừa (như cũ), 200 = gấp đôi */
+.rsvp-attending-invite {
+  --rsvp-attending-invite-quote-font-size-pct: 130;
+}
+
+.rsvp-attending-invite .rsvp-attending-invite-quote {
+  font-size: calc(1em * var(--rsvp-attending-invite-quote-font-size-pct) / 100);
+}
+
 .rsvp-section {
   padding: 24px 12px;
 }
@@ -1384,11 +1399,27 @@ input.wpcf7-submit.button {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 }
 
+/* Single column: don’t force a crop box — show full photo like the desktop column */
+@media (max-width: 849px) {
+  .rsvp-section .side-rsvp-img {
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+}
+
 /* --- Thank you / gift --- */
 .section-thanks {
   padding: 30px 12px;
   background: var(--cream);
   text-align: center;
+  /* Đoạn mời cuối (.thanks-invite-quote): 100 = cỡ chữ kế thừa (như cũ), 200 = gấp đôi */
+  --thanks-invite-quote-font-size-pct: 130;
+}
+
+.section-thanks .thanks-invite-quote {
+  font-size: calc(1em * var(--thanks-invite-quote-font-size-pct) / 100);
 }
 
 .wishes-gift-wrap {

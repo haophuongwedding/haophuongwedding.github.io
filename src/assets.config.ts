@@ -1,12 +1,11 @@
 /**
  * Single place for media paths. `index.html` uses `data-asset="section.key"` only.
  *
- * Reserved paths are excluded from auto grid `G`. `MY_WEDDING_DAY` lists vertical WebPs under
- * `my_wedding/wedding/vertical/` (hero, invite, RSVP side photo, etc.).
+ * `MY_WEDDING_DAY` lists vertical WebPs under `my_wedding/wedding/vertical/` (reference / pick paths).
  *
- * **Wedding Moments** (`weddingAssets.gallery`) uses only JPGs in `public/assets/gallary/vertical`
- * and `.../gallary/horizontal` — edit those arrays when you add/remove files there. Vertical slot
- * order is seeded-shuffle; change `GALLERY_SHUFFLE_SEED` to reshuffle.
+ * **Wedding Moments** (`weddingAssets.gallery`) uses JPGs in `public/assets/gallary/vertical` and
+ * `.../gallary/horizontal` — edit those arrays when you add/remove files. Order follows the sorted
+ * arrays below (deterministic).
  */
 const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 
@@ -35,26 +34,8 @@ const COUNTDOWN_PAIR_RIGHT = PHOTO_BRIDE_SOLO;
 /** Ảnh lớn cột trái thiệp mời (dưới monogram). */
 const INVITE_COVER_PHOTO = `${WV}/0X5A8990.webp`;
 
-/** Seed — đổi chuỗi này để xáo thứ tự gallery khác (vẫn ổn định mỗi lần load). */
-const GALLERY_SHUFFLE_SEED = 'hao-phuong-gallery-2026';
-
-function seededShuffle<T>(items: readonly T[], seed: string): T[] {
-  const a = [...items];
-  let h = 2166136261;
-  for (let i = 0; i < seed.length; i++) {
-    h = Math.imul(h ^ seed.charCodeAt(i), 16777619);
-  }
-  let state = h >>> 0;
-  const rnd = (): number => {
-    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-    return state / 0xffffffff;
-  };
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(rnd() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+/** Ảnh cột phải form RSVP — đổi đường dẫn tại đây. */
+const RSVP_SIDE_PHOTO = `${WV}/3-copy.webp`;
 
 /** Alphabetically sorted filenames under `public/assets/my_wedding/wedding/vertical/`. */
 export const MY_WEDDING_DAY = [
@@ -79,18 +60,6 @@ export const MY_WEDDING_DAY = [
   `${WV}/0X5A9140.webp`,
   `${WV}/3-copy.webp`,
 ] as const;
-
-const RESERVED_PHOTOS = new Set<string>([
-  HERO_IMAGE,
-  PHOTO_GROOM_SOLO,
-  PHOTO_BRIDE_SOLO,
-  LOVE_PAIR_LEFT,
-  LOVE_PAIR_RIGHT,
-  INVITE_COVER_PHOTO,
-]);
-
-const G_RAW = MY_WEDDING_DAY.filter((p) => !RESERVED_PHOTOS.has(p));
-const G_ORDERED = seededShuffle(G_RAW, GALLERY_SHUFFLE_SEED);
 
 /** Wedding Moments only — `public/assets/gallary/{vertical,horizontal}/` (see folder names). */
 const GALL = '/assets/gallary';
@@ -128,11 +97,10 @@ const GALLARY_HORIZONTAL = [
   `${GH}/93912903375598623821.jpg`,
 ].sort((a, b) => a.localeCompare(b));
 
-/** Ảnh ngang thứ hai ở cuối lưới (cùng hàng với `h[8]`) — ổn định theo seed, không trùng `exclude`. */
-function pickHorizontalExcluding(pool: readonly string[], exclude: string, seed: string): string {
+/** Ảnh ngang thứ hai ở cuối lưới (cùng hàng với `h[8]`) — không trùng `exclude`. */
+function pickHorizontalExcluding(pool: readonly string[], exclude: string): string {
   const candidates = pool.filter((p) => p !== exclude);
-  if (candidates.length === 0) return pool[0]!;
-  return seededShuffle([...candidates], `${seed}|moments-tail-h2`)[0]!;
+  return candidates.length > 0 ? candidates[0]! : pool[0]!;
 }
 
 /**
@@ -140,7 +108,7 @@ function pickHorizontalExcluding(pool: readonly string[], exclude: string, seed:
  * Thứ tự flatten = thứ tự `data-gallery-index` trong HTML.
  */
 function buildWeddingMomentsGallery(): string[] {
-  const v = seededShuffle([...GALLARY_VERTICAL], GALLERY_SHUFFLE_SEED);
+  const v = [...GALLARY_VERTICAL];
   const h = GALLARY_HORIZONTAL;
   const mosaic: string[] = [
     v[0]!,
@@ -162,7 +130,7 @@ function buildWeddingMomentsGallery(): string[] {
   }
   if (h[8]) {
     tail.push(h[8]!);
-    tail.push(pickHorizontalExcluding(h, h[8]!, GALLERY_SHUFFLE_SEED));
+    tail.push(pickHorizontalExcluding(h, h[8]!));
   }
   return [...mosaic, ...tail];
 }
@@ -212,7 +180,7 @@ export const weddingAssets = {
     weddingWishes: '/assets/shared/wedding-wishes.png',
   },
   rsvp: {
-    sidePhoto: G_ORDERED[13]!,
+    sidePhoto: RSVP_SIDE_PHOTO,
     radio: {
       comingNo: '/assets/rsvp/radio/coming-no.png',
       comingYes: '/assets/rsvp/radio/coming-yes.png',
