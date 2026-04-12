@@ -4,8 +4,7 @@
  * `MY_WEDDING_DAY` lists vertical WebPs under `my_wedding/wedding/vertical/` (reference / pick paths).
  *
  * **Wedding Moments** (`weddingAssets.gallery`) uses JPGs in `public/assets/gallary/vertical` and
- * `.../gallary/horizontal` — edit those arrays when you add/remove files. Order follows the sorted
- * arrays below (deterministic).
+ * `.../gallary/horizontal` — edit `WEDDING_MOMENTS_GALLERY` (25 slots, order = mosaic + tail in `index.html`).
  */
 const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 
@@ -66,76 +65,41 @@ const GALL = '/assets/gallary';
 const GV = `${GALL}/vertical`;
 const GH = `${GALL}/horizontal`;
 
-const GALLARY_VERTICAL = [
-  `${GV}/13275572914919946396.jpg`,
-  `${GV}/13275572914919946397.jpg`,
-  `${GV}/14694617650096014111.jpg`,
-  `${GV}/14694617650096014113.jpg`,
-  `${GV}/15348085452160349274.jpg`,
-  `${GV}/15348085452160349275.jpg`,
-  `${GV}/189966359786027819717.jpg`,
-  `${GV}/22445109688673196812.jpg`,
-  `${GV}/22445109688673196813.jpg`,
-  `${GV}/24790753506024261310.jpg`,
-  `${GV}/24790753506024261311.jpg`,
-  `${GV}/2479075350602426138.jpg`,
-  `${GV}/2479075350602426139.jpg`,
-  `${GV}/419746622512118428814.jpg`,
-  `${GV}/46866694797244361615.jpg`,
-  `${GV}/46866694797244361616.jpg`,
-].sort((a, b) => a.localeCompare(b));
-
-const GALLARY_HORIZONTAL = [
-  `${GH}/116985017215338457918.jpg`,
-  `${GH}/116985017215338457919.jpg`,
-  `${GH}/120742701212944677925.jpg`,
-  `${GH}/14694617650096014112.jpg`,
-  `${GH}/151476750526240505620.jpg`,
-  `${GH}/220929700713428527423.jpg`,
-  `${GH}/325939822288538533224.jpg`,
-  `${GH}/80786114520085817122.jpg`,
-  `${GH}/93912903375598623821.jpg`,
-].sort((a, b) => a.localeCompare(b));
-
-/** Ảnh ngang thứ hai ở cuối lưới (cùng hàng với `h[8]`) — không trùng `exclude`. */
-function pickHorizontalExcluding(pool: readonly string[], exclude: string): string {
-  const candidates = pool.filter((p) => p !== exclude);
-  return candidates.length > 0 ? candidates[0]! : pool[0]!;
-}
-
 /**
- * Wedding Moments: 4 hàng xen kẽ (1 dọc + 2 ngang / 2 ngang + 1 dọc), sau đó lưới ảnh dọc.
- * Thứ tự flatten = thứ tự `data-gallery-index` trong HTML.
+ * Wedding Moments: mosaic (12 ô: 4 dọc + 8 ngang theo `index.html`) + lưới đuôi (13 ô) = 25 ảnh.
+ * Thứ tự xen kẽ chủ đề (Huế / studio / vest / solo) để hai ảnh liền nhau ít trùng “vibe”.
  */
-function buildWeddingMomentsGallery(): string[] {
-  const v = [...GALLARY_VERTICAL];
-  const h = GALLARY_HORIZONTAL;
-  const mosaic: string[] = [
-    v[0]!,
-    h[0]!,
-    h[1]!,
-    h[2]!,
-    h[3]!,
-    v[1]!,
-    v[2]!,
-    h[4]!,
-    h[5]!,
-    h[6]!,
-    h[7]!,
-    v[3]!,
-  ];
-  const tail: string[] = [];
-  for (let i = 4; i < 12; i++) {
-    if (v[i]) tail.push(v[i]!);
-  }
-  if (h[8]) {
-    tail.push(h[8]!);
-    tail.push(pickHorizontalExcluding(h, h[8]!));
-  }
-  return [...mosaic, ...tail];
-}
+const WEDDING_MOMENTS_GALLERY: string[] = [
+  `${GV}/couple_studio_save_the_date_banner.jpg`,
+  `${GH}/couple_hue_aodai_walk_1.jpg`,
+  `${GH}/husband_studio_blackvest_sit_1.jpg`,
+  `${GH}/couple_hue_aodai_sit_1.jpg`,
+  `${GH}/couple_hue_aodai_stand_1.jpg`,
+  `${GV}/wife_studio_whitedress_stand_1.jpg`,
+  `${GV}/couple_studio_grayvest_standkiss.jpg`,
+  `${GH}/couple_hue_aodai_stand_6.jpg`,
+  `${GH}/couple_hue_aodai_stand_2.jpg`,
+  `${GH}/couple_hue_aodai_stand_4.jpg`,
+  `${GH}/couple_hue_aodai_stand_3.jpg`,
+  `${GV}/couple_studio_blackvest_standkiss.jpg`,
+  `${GV}/couple_studio_whitedress_blackvest_sit_1.jpg`,
+  `${GV}/couple_studio_whitedress_grayvest_stand_1.jpg`,
+  `${GV}/husband_studio_grayvest_stand_1.jpg`,
+  `${GV}/couple_studio_whitedress_blackvest_stand_1.jpg`,
+  `${GV}/wife_studio_whitedress_sit_1.jpg`,
+  `${GV}/couple_studio_whitedress_grayvest_stand_2.jpg`,
+  `${GV}/couple_studio_whitedress_blackvest_sit_2.jpg`,
+  `${GV}/husband_studio_grayvest_stand_2.jpg`,
+  `${GV}/couple_studio_whitedress_grayvest_stand_3.jpg`,
+  `${GV}/couple_studio_whitedress_blackvest_stand_2.jpg`,
+  `${GV}/wife_studio_whitedress_stand_2.jpg`,
+  `${GV}/couple_studio_whitedress_blackvest_stand_3.jpg`,
+  `${GH}/couple_hue_aodai_stand_5.jpg`,
+];
 
-const WEDDING_MOMENTS_GALLERY = buildWeddingMomentsGallery();
+if (import.meta.env?.DEV && WEDDING_MOMENTS_GALLERY.length !== 25) {
+  throw new Error(`Wedding Moments gallery must have 25 images, got ${WEDDING_MOMENTS_GALLERY.length}`);
+}
 
 export const weddingAssets = {
   hero: {
