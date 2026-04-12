@@ -235,6 +235,12 @@ a {
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+
+.invite-col--right {
+  /* Giờ tiệc (h5.time-line): 100 = kích thước gốc, 200 = gấp đôi */
+  --invite-timeline-font-size-pct: 125;
+}
+
 @media (max-width: 549px) {
   /* On small mobile the right col (invitation text, now rendered first) gets
      slightly tighter horizontal padding to give images more breathing room. */
@@ -499,7 +505,9 @@ a {
 /* Giờ tiệc — chữ số cùng cỡ/độ đậm với nhãn (Cormorant oldstyle figures trông nhỏ hơn) */
 .invite-col--right h5.time-line {
   font-family: 'Cormorant Garamond', 'Times New Roman', Times, serif;
-  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-size: calc(
+    clamp(1.05rem, 3.6vw, 1.35rem) * var(--invite-timeline-font-size-pct) / 100
+  );
   font-weight: 700;
   font-style: normal;
   line-height: 1.45;
@@ -514,6 +522,10 @@ a {
   padding: 30px 12px;
   color: #fff;
   background: #222;
+  /* Lời chú rể (.couple-quote--groom): 100 = cỡ chữ kế thừa (như cũ), 200 = gấp đôi */
+  --couple-groom-quote-font-size-pct: 120;
+  /* Lời cô dâu (.couple-quote--bride): 100 = cỡ chữ kế thừa (như cũ), 200 = gấp đôi */
+  --couple-bride-quote-font-size-pct: 120;
 }
 
 /* Blurred photo layer (giống mẫu thiệp — chỉ blur nền, không blur chữ/ảnh) */
@@ -564,6 +576,14 @@ a {
 .couple-grid p {
   text-align: justify;
   hyphens: auto;
+}
+
+.section-dark-couple .couple-quote--groom {
+  font-size: calc(1em * var(--couple-groom-quote-font-size-pct) / 100);
+}
+
+.section-dark-couple .couple-quote--bride {
+  font-size: calc(1em * var(--couple-bride-quote-font-size-pct) / 100);
 }
 /* Center column is always centered — on mobile too, not just desktop */
 .couple-grid .col-center p {

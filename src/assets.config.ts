@@ -34,7 +34,7 @@ const COUNTDOWN_PAIR_LEFT = PHOTO_GROOM_SOLO;
 const COUNTDOWN_PAIR_RIGHT = PHOTO_BRIDE_SOLO;
 
 /** Ảnh lớn cột trái thiệp mời (dưới monogram). */
-const INVITE_COVER_PHOTO = `${WV}/0X5A9034.webp`;
+const INVITE_COVER_PHOTO = `${WV}/0X5A8990.webp`;
 
 /** Seed — đổi chuỗi này để xáo thứ tự gallery khác (vẫn ổn định mỗi lần load). */
 const GALLERY_SHUFFLE_SEED = 'hao-phuong-gallery-2026';
