@@ -15,9 +15,9 @@ export const weddingContent = {
   invite: {
     guestSalutationHtml: '<em><strong>Quý khách</strong></em>',
     partyInviteHtml:
-      '<strong>ĐẾN DỰ BUỔI TIỆC CHUNG VUI<br />CÙNG GIA ĐÌNH CHÚNG TÔI</strong>',
+      '<strong>ĐẾN DỰ BUỔI TIỆC THÂN MẬT<br />CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI</strong>',
     venueTitleHtml:
-      '<strong><span style="font-size: 80%">TẠI</span><br /><span class="hotel-name">TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI ROYAL KING</span><br /></strong>',
+      '<strong><span class="venue-prefix">TẠI TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI</span><span class="hotel-name">ROYAL KING</span></strong>',
     venueAddress: '53 Nguyễn Hữu Cảnh, Phường Đồng Hới, Tỉnh Quảng Trị',
     lunarNote: '(NHẰM NGÀY 28 THÁNG 02 NĂM BÍNH NGỌ)',
     mapUrl:

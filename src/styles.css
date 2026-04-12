@@ -342,11 +342,6 @@ a {
     border-radius: 0;
     box-shadow: none;
   }
-  .invite-col--right h5.time-line {
-    font-size: clamp(1.05rem, 4.5vw, 1.35rem);
-    font-weight: 700;
-    line-height: 1.45;
-  }
 }
 @media (min-width: 850px) {
   .invite-inner-photo .cover-photo {
@@ -366,29 +361,93 @@ a {
   font-style: italic;
   font-weight: 700;
 }
+.text-quy-khach em,
+.text-quy-khach strong {
+  font-style: italic;
+  font-weight: 700;
+}
 
 .text-invite-bold {
   font-size: 90%;
+  font-style: normal;
+  font-weight: 700;
+}
+.text-invite-bold strong {
+  font-style: normal;
   font-weight: 700;
 }
 
-.hotel-title {
+/* Địa điểm — một cột flex + gap cố định: khoảng cách đều giữa 3 dòng (như mẫu) */
+.venue-stack {
+  --venue-line-gap: clamp(0.155rem, 1.2vw, 0.29rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--venue-line-gap);
+  /* Khoảng cách lớn hơn từ khối tên (ảnh headline) + divider tới dòng “TẠI TRUNG TÂM…” */
+  margin: clamp(0.42rem, 2.6vw, 0.85rem) 0 0.38rem;
+  text-align: center;
+}
+
+.venue-stack .hotel-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--venue-line-gap);
+  width: 100%;
   font-size: 120%;
   color: #000;
+  font-weight: 700;
+  line-height: 1.2;
 }
-.hotel-name {
+
+.venue-stack .hotel-title strong {
+  display: contents;
+}
+
+.venue-stack .venue-prefix {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(0.68rem, 2.75vw, 0.82rem);
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.venue-stack .hotel-name {
+  display: block;
+  width: 100%;
+  margin: 0;
   font-size: 130%;
+  line-height: 1.2;
   color: var(--accent);
 }
 
-/* Âm lịch — giống mẫu: HOA to, cỡ chữ lớn hơn */
+.venue-stack .venue-address {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(0.95rem, 3.6vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Âm lịch — nhỏ, thẳng chữ, cùng họ serif với thiệp (như mẫu) */
 .invite-lunar-note {
   margin: 10px 12px 6px;
-  font-size: clamp(0.95rem, 3.8vw, 1.15rem);
-  font-weight: 700;
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-family: 'Cormorant Garamond', 'Times New Roman', Times, serif;
+  font-size: clamp(0.74rem, 2.6vw, 0.9rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: var(--text-dark);
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
 }
 
 .btn-map {
@@ -396,8 +455,9 @@ a {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: min(100%, 17.5rem);
-  padding: 12px 36px;
+  min-width: unset;
+  max-width: 100%;
+  padding: 12px 22px;
   border-radius: 99px;
   background: var(--btn-gold);
   color: #fff !important;
@@ -424,6 +484,17 @@ a {
 
 .time-line {
   margin: 1rem 0;
+}
+
+/* Giờ tiệc — chữ số cùng cỡ/độ đậm với nhãn (Cormorant oldstyle figures trông nhỏ hơn) */
+.invite-col--right h5.time-line {
+  font-family: 'Cormorant Garamond', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.45;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
 }
 
 /* --- Dark couple section --- */
@@ -656,6 +727,9 @@ a {
   height: auto;
   width: clamp(200px, 94%, 904px);
 }
+.invite-col--right .img-invite-headline {
+  margin-bottom: clamp(0.18rem, 1.4vw, 0.42rem);
+}
 /* Divider, venue art, timeline — use most of the text column; high max so mobile isn’t capped too narrow */
 .invite-col--right .img-invite-divider,
 .invite-col--right .img-venue-illustration,
@@ -666,6 +740,9 @@ a {
   width: clamp(160px, 97%, 920px);
   max-width: 100%;
   object-fit: contain;
+}
+.invite-col--right .img-invite-divider {
+  margin-bottom: clamp(0.28rem, 2vw, 0.62rem);
 }
 
 /* Couple section images */
