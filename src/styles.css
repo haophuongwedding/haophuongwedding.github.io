@@ -784,9 +784,9 @@ a {
   width: clamp(160px, 76%, 540px);
 }
 
-/* Thanks / gift accent */
+/* Thanks / gift accent — wide like thiepcuoionline so “Thank you” in the art reads large */
 .img-thanks-accent {
-  width: clamp(110px, 55%, 450px);
+  width: min(94vw, 600px, 100%);
   height: auto;
   margin-top: 16px;
 }
