@@ -23,7 +23,7 @@ const COUPLE_SECTION_BG = '/assets/shared/silver_ring_background.jpg';
 
 /** Ảnh đơn nhà trai / nhà gái (section tối giữa). */
 const PHOTO_GROOM_SOLO = `${WV}/0X5A9140.webp`;
-const PHOTO_BRIDE_SOLO = `${WV}/0X5A9133.webp`;
+const PHOTO_BRIDE_SOLO = `${WV}/0X5A8923.webp`;
 
 /** Cặp Love story (2 ảnh bên trái / giữa, phía trên countdown). */
 const LOVE_PAIR_LEFT = '/assets/events/love-story-Hao-Phuong-2.png';

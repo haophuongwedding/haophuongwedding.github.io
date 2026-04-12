@@ -597,12 +597,27 @@ a {
   font-weight: 700;
   font-style: italic;
   line-height: 1.55;
-  margin: 0.35rem 0 0.85rem;
+  margin: 0.35rem 0 0.25rem;
 }
 @media (min-width: 850px) {
   .section-dark-couple .couple-parents {
     font-size: clamp(1.22rem, 1.35vw, 1.52rem);
-    margin: 0.4rem 0 0.9rem;
+    margin: 0.4rem 0 0.28rem;
+  }
+}
+
+/* Địa chỉ nhà trai / nhà gái — cùng kiểu chữ với tên cha mẹ */
+.section-dark-couple .couple-parents-address {
+  font-size: clamp(1.18rem, 4.2vw, 1.48rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0 0 0.85rem;
+}
+@media (min-width: 850px) {
+  .section-dark-couple .couple-parents-address {
+    font-size: clamp(1.22rem, 1.35vw, 1.52rem);
+    margin: 0 0 0.9rem;
   }
 }
 

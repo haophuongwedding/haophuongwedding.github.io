@@ -28,7 +28,9 @@ export const weddingContent = {
 
   couple: {
     groomParentsHtml: 'Ông: Hoàng Văn Hùng<br />Bà: Hoàng Thị Thư',
+    groomParentsAddress: 'Thôn Văn La, Xã Quảng Ninh, Tỉnh Quảng Trị',
     brideParentsHtml: 'Ông: Nguyễn Thanh Bình<br />Bà: Lê Thị Thu Hương',
+    brideParentsAddress: 'TDP 5, Phường Đồng Thuận, Tỉnh Quảng Trị',
     groomQuote:
       'Đối với chúng mình hôn nhân không phải là đích đến cuối của tình yêu mà là khởi đầu của hạnh phúc.',
     brideQuote:
