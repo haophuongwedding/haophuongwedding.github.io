@@ -237,7 +237,7 @@ a {
   /* On small mobile the right col (invitation text, now rendered first) gets
      slightly tighter horizontal padding to give images more breathing room. */
   .invite-col--right {
-    padding: 20px 10px 24px;
+    padding: 20px 12px 24px;
   }
   /* Photo col (second on mobile) — reduce top padding, no shadow duplication */
   .invite-col-inner {
@@ -247,8 +247,8 @@ a {
 }
 @media (min-width: 550px) {
   .invite-col--right {
-    /* Giữ lề ngang 10%; padding dọc khớp cột trái (trước đây spacer 16px bị mất khi bỏ div) */
-    padding: 24px 10% 32px;
+    /* 8% sides: a bit wider content band than 10% while keeping a modest gutter */
+    padding: 24px 8% 32px;
   }
 }
 
@@ -592,37 +592,18 @@ a {
   display: block;
   margin: 0 auto;
   height: auto;
-  width: clamp(200px, 88%, 904px);
+  width: clamp(200px, 94%, 904px);
 }
-/* Decorative rails: span nearly the full cream column (extend into side padding),
-   matching sample sites where divider / venue art / timeline touch the card edges. */
+/* Divider, venue art, timeline — use most of the text column; high max so mobile isn’t capped too narrow */
 .invite-col--right .img-invite-divider,
 .invite-col--right .img-venue-illustration,
 .invite-col--right .img-reception-timeline {
   display: block;
+  margin: 0 auto;
   height: auto;
-  max-width: none;
+  width: clamp(160px, 97%, 920px);
+  max-width: 100%;
   object-fit: contain;
-}
-/* ≤549px: .invite-col--right uses 10px horizontal padding — cancel it for these images */
-@media (max-width: 549px) {
-  .invite-col--right .img-invite-divider,
-  .invite-col--right .img-venue-illustration,
-  .invite-col--right .img-reception-timeline {
-    width: calc(100% + 20px);
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-}
-/* ≥550px: column uses 10% side padding — width/margin math: content = 80% of cell → 125% / −12.5% */
-@media (min-width: 550px) {
-  .invite-col--right .img-invite-divider,
-  .invite-col--right .img-venue-illustration,
-  .invite-col--right .img-reception-timeline {
-    width: 125%;
-    margin-left: -12.5%;
-    margin-right: -12.5%;
-  }
 }
 
 /* Couple section images */
