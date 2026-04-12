@@ -10,7 +10,7 @@
  *   node scripts/convert-studio-jpg-to-webp.mjs
  *
  * Options:
- *   DIR=public/assets/my_wedding/wedding  (default)
+ *   DIR=public/assets/my_wedding/wedding/vertical  (default)
  *   MAX_WIDTH=2400                       (default 2400)
  *   QUALITY=78                           (default 78)
  */
@@ -20,7 +20,7 @@ import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const relDir = process.env.DIR || 'public/assets/my_wedding/wedding';
+const relDir = process.env.DIR || 'public/assets/my_wedding/wedding/vertical';
 const absDir = path.join(repoRoot, relDir);
 
 const maxWidth = Number(process.env.MAX_WIDTH) || 2400;

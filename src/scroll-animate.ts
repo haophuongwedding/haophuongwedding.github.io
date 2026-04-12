@@ -16,13 +16,22 @@ const GALLERY_SEQUENCE = [
   'fadeInLeft',
   'bounceInUp',
   'fadeInLeft',
+  'fadeInRight',
+  'bounceIn',
+  'bounceInUp',
+  'fadeInLeft',
+  'fadeInLeft',
+  'bounceIn',
+  'fadeInLeft',
+  'fadeInUp',
+  'fadeInRight',
 ] as const;
 
 function assignGalleryAnimations(): void {
   const items = document.querySelectorAll<HTMLElement>('#gallery .js-lightbox');
+  const n = GALLERY_SEQUENCE.length;
   items.forEach((el, i) => {
-    const name = GALLERY_SEQUENCE[i];
-    if (name) el.dataset.animate = name;
+    el.dataset.animate = GALLERY_SEQUENCE[i % n]!;
   });
 }
 

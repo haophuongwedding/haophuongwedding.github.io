@@ -12,9 +12,11 @@ import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const dirs = ['public/assets/my_wedding/wedding', 'public/assets/my_wedding/engagement'].map((d) =>
-  path.join(repoRoot, d),
-);
+const dirs = [
+  'public/assets/my_wedding/wedding/vertical',
+  'public/assets/my_wedding/wedding/horizontal',
+  'public/assets/my_wedding/engagement',
+].map((d) => path.join(repoRoot, d));
 
 const maxWidth = Number(process.env.MAX_WIDTH) || 1920;
 const quality = Number(process.env.QUALITY) || 82;

@@ -10,7 +10,7 @@ function syncCellAspect(anchor: HTMLAnchorElement, img: HTMLImageElement): void 
 }
 
 export function initGalleryAspectRatios(): void {
-  document.querySelectorAll<HTMLAnchorElement>('#gallery a.js-lightbox').forEach((a) => {
+  document.querySelectorAll<HTMLAnchorElement>('#gallery .gallery-grid--tail a.js-lightbox').forEach((a) => {
     const img = a.querySelector('img');
     if (!img) return;
 

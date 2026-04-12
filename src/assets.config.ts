@@ -2,24 +2,28 @@
  * Single place for media paths. `index.html` uses `data-asset="section.key"` only.
  *
  * Reserved paths are excluded from auto grid `G`. `0X5A9145.JPG` is omitted from
- * `MY_WEDDING_DAY` (not used on site). Gallery order is seeded-shuffle — change
- * `GALLERY_SHUFFLE_SEED` to reshuffle.
+ * `MY_WEDDING_DAY` (not used on site). Vertical pool order is seeded-shuffle — change
+ * `GALLERY_SHUFFLE_SEED` to reshuffle. Wedding Moments adds horizontal WebPs from
+ * `my_wedding/wedding/horizontal/` in a mosaic + tail grid (see `buildWeddingMomentsGallery`).
  *
- * `MY_WEDDING_DAY` is alphabetical — edit when you add/remove wedding JPGs.
+ * Vertical photos live in `my_wedding/wedding/vertical/`. `MY_WEDDING_DAY` is alphabetical —
+ * edit when you add/remove wedding WebPs there.
  */
 const giftsDateIllustration = '/assets/gifts/date-illustration.png';
 
 const W = '/assets/my_wedding/wedding';
+/** Ảnh dọc (hero, thiệp, cặp đôi, gallery pool) — `public/.../wedding/vertical/` */
+const WV = `${W}/vertical`;
 
 /** Top banner (ảnh ngang). */
-const HERO_IMAGE = `${W}/0X5A9121.webp`;
+const HERO_IMAGE = `${WV}/0X5A9121.webp`;
 
 /** Nền section cặp đôi (NHÀ TRAI / NHÀ GÁI) — ảnh nhẫn mờ như mẫu thiệp. */
 const COUPLE_SECTION_BG = '/assets/shared/silver_ring_background.jpg';
 
 /** Ảnh đơn nhà trai / nhà gái (section tối giữa). */
-const PHOTO_GROOM_SOLO = `${W}/0X5A9140.webp`;
-const PHOTO_BRIDE_SOLO = `${W}/0X5A9133.webp`;
+const PHOTO_GROOM_SOLO = `${WV}/0X5A9140.webp`;
+const PHOTO_BRIDE_SOLO = `${WV}/0X5A9133.webp`;
 
 /** Cặp Love story (2 ảnh bên trái / giữa, phía trên countdown). */
 const LOVE_PAIR_LEFT = '/assets/events/love-story-Hao-Phuong-2.png';
@@ -30,7 +34,7 @@ const COUNTDOWN_PAIR_LEFT = PHOTO_GROOM_SOLO;
 const COUNTDOWN_PAIR_RIGHT = PHOTO_BRIDE_SOLO;
 
 /** Ảnh lớn cột trái thiệp mời (dưới monogram). */
-const INVITE_COVER_PHOTO = `${W}/0X5A9034.webp`;
+const INVITE_COVER_PHOTO = `${WV}/0X5A9034.webp`;
 
 /** Seed — đổi chuỗi này để xáo thứ tự gallery khác (vẫn ổn định mỗi lần load). */
 const GALLERY_SHUFFLE_SEED = 'hao-phuong-gallery-2026';
@@ -53,28 +57,28 @@ function seededShuffle<T>(items: readonly T[], seed: string): T[] {
   return a;
 }
 
-/** Alphabetically sorted filenames under `public/assets/my_wedding/wedding/`. */
+/** Alphabetically sorted filenames under `public/assets/my_wedding/wedding/vertical/`. */
 export const MY_WEDDING_DAY = [
-  `${W}/0X5A8921.webp`,
-  `${W}/0X5A8923.webp`,
-  `${W}/0X5A8945s.webp`,
-  `${W}/0X5A8978.webp`,
-  `${W}/0X5A8988.webp`,
-  `${W}/0X5A8990.webp`,
-  `${W}/0X5A8999.webp`,
-  `${W}/0X5A9023.webp`,
-  `${W}/0X5A9024.webp`,
-  `${W}/0X5A9034.webp`,
-  `${W}/0X5A9057.webp`,
-  `${W}/0X5A9101.webp`,
-  `${W}/0X5A9103.webp`,
-  `${W}/0X5A9106.webp`,
-  `${W}/0X5A9111.webp`,
-  `${W}/0X5A9113.webp`,
-  `${W}/0X5A9121.webp`,
-  `${W}/0X5A9133.webp`,
-  `${W}/0X5A9140.webp`,
-  `${W}/3-copy.webp`,
+  `${WV}/0X5A8921.webp`,
+  `${WV}/0X5A8923.webp`,
+  `${WV}/0X5A8945s.webp`,
+  `${WV}/0X5A8978.webp`,
+  `${WV}/0X5A8988.webp`,
+  `${WV}/0X5A8990.webp`,
+  `${WV}/0X5A8999.webp`,
+  `${WV}/0X5A9023.webp`,
+  `${WV}/0X5A9024.webp`,
+  `${WV}/0X5A9034.webp`,
+  `${WV}/0X5A9057.webp`,
+  `${WV}/0X5A9101.webp`,
+  `${WV}/0X5A9103.webp`,
+  `${WV}/0X5A9106.webp`,
+  `${WV}/0X5A9111.webp`,
+  `${WV}/0X5A9113.webp`,
+  `${WV}/0X5A9121.webp`,
+  `${WV}/0X5A9133.webp`,
+  `${WV}/0X5A9140.webp`,
+  `${WV}/3-copy.webp`,
 ] as const;
 
 const RESERVED_PHOTOS = new Set<string>([
@@ -88,6 +92,61 @@ const RESERVED_PHOTOS = new Set<string>([
 
 const G_RAW = MY_WEDDING_DAY.filter((p) => !RESERVED_PHOTOS.has(p));
 const G_ORDERED = seededShuffle(G_RAW, GALLERY_SHUFFLE_SEED);
+
+/** Ảnh ngang — `public/assets/my_wedding/wedding/horizontal/` (WebP; regenerate via `npm run optimize:wedding:webp` with `DIR=.../horizontal`). */
+const WH = `${W}/horizontal`;
+const HORIZONTAL_WEDDING = [
+  `${WH}/11698501721533845791.webp`,
+  `${WH}/11698501721533845792.webp`,
+  `${WH}/12074270121294467798.webp`,
+  `${WH}/15147675052624050563.webp`,
+  `${WH}/22092970071342852746.webp`,
+  `${WH}/32593982228853853327.webp`,
+  `${WH}/3341461635211508678.webp`,
+  `${WH}/8078611452008581715.webp`,
+  `${WH}/9391290337559862384.webp`,
+].sort((a, b) => a.localeCompare(b));
+
+/** Ảnh ngang thứ hai ở cuối lưới (cùng hàng với `h[8]`) — ổn định theo seed, không trùng `exclude`. */
+function pickHorizontalExcluding(pool: readonly string[], exclude: string, seed: string): string {
+  const candidates = pool.filter((p) => p !== exclude);
+  if (candidates.length === 0) return pool[0]!;
+  return seededShuffle([...candidates], `${seed}|moments-tail-h2`)[0]!;
+}
+
+/**
+ * Wedding Moments: 4 hàng xen kẽ (1 dọc + 2 ngang / 2 ngang + 1 dọc), sau đó lưới ảnh dọc.
+ * Thứ tự flatten = thứ tự `data-gallery-index` trong HTML.
+ */
+function buildWeddingMomentsGallery(): string[] {
+  const v = G_ORDERED;
+  const h = HORIZONTAL_WEDDING;
+  const mosaic: string[] = [
+    v[0]!,
+    h[0]!,
+    h[1]!,
+    h[2]!,
+    h[3]!,
+    v[1]!,
+    v[2]!,
+    h[4]!,
+    h[5]!,
+    h[6]!,
+    h[7]!,
+    v[3]!,
+  ];
+  const tail: string[] = [];
+  for (let i = 4; i < 12; i++) {
+    if (v[i]) tail.push(v[i]!);
+  }
+  if (h[8]) {
+    tail.push(h[8]!);
+    tail.push(pickHorizontalExcluding(h, h[8]!, GALLERY_SHUFFLE_SEED));
+  }
+  return [...mosaic, ...tail];
+}
+
+const WEDDING_MOMENTS_GALLERY = buildWeddingMomentsGallery();
 
 export const weddingAssets = {
   hero: {
@@ -125,21 +184,7 @@ export const weddingAssets = {
     countdownLeft: COUNTDOWN_PAIR_LEFT,
     countdownRight: COUNTDOWN_PAIR_RIGHT,
   },
-  gallery: [
-    G_ORDERED[0]!,
-    G_ORDERED[1]!,
-    G_ORDERED[2]!,
-    G_ORDERED[3]!,
-    G_ORDERED[4]!,
-    G_ORDERED[5]!,
-    G_ORDERED[6]!,
-    G_ORDERED[7]!,
-    G_ORDERED[8]!,
-    G_ORDERED[9]!,
-    G_ORDERED[10]!,
-    G_ORDERED[11]!,
-    G_ORDERED[12]!,
-  ] as const,
+  gallery: WEDDING_MOMENTS_GALLERY,
   shared: {
     ribbonHeading: '/assets/shared/ribbon-heading.png',
     weddingAttending: '/assets/shared/wedding-attending.png',
