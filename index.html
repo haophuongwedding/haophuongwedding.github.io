@@ -72,7 +72,6 @@
           </p>
           <img data-animate="fadeInUp" class="time-line img-reception-timeline" data-asset="invite.receptionTimeline" alt="" />
           <h5 class="text-center time-line" data-content="invite.timelineHtml"></h5>
-          <p class="text-center" style="margin-top: 8px" data-content="invite.weekdayNoteHtml"></p>
         </div>
       </div>
     </div>
@@ -80,12 +79,14 @@
     <section class="section-dark-couple">
       <div class="inner">
         <div class="couple-grid">
-          <div data-animate="fadeInLeft">
-            <img class="img-couple-photo" data-asset="couple.photoLeft" alt="" />
-            <img class="img-couple-caption" data-asset="couple.captionLeft" alt="" />
+          <div>
+            <div class="couple-pair-visual" data-animate="coupleSlideLeft">
+              <img class="img-couple-photo" data-asset="couple.photoLeft" alt="" />
+              <img class="img-couple-caption" data-asset="couple.captionLeft" alt="" />
+            </div>
             <p data-content="couple.groomQuote"></p>
           </div>
-          <div class="col-center" data-animate="fadeInUp" data-anim-delay="0.28s">
+          <div class="col-center">
             <p class="text-center"><strong>NHÀ TRAI</strong></p>
             <p class="text-center" data-content="couple.groomParentsHtml"></p>
             <p class="text-center" style="font-size: 90%; margin-top: 6px" data-content="couple.groomAddress"></p>
@@ -94,9 +95,11 @@
             <p class="text-center" data-content="couple.brideParentsHtml"></p>
             <p class="text-center" style="font-size: 90%; margin-top: 6px" data-content="couple.brideAddress"></p>
           </div>
-          <div data-animate="fadeInRight" data-anim-delay="0.28s">
-            <img class="img-couple-photo" data-asset="couple.photoRight" alt="" />
-            <img class="img-couple-caption" data-asset="couple.captionRight" alt="" />
+          <div>
+            <div class="couple-pair-visual" data-animate="coupleSlideRight" data-anim-delay="0.28s">
+              <img class="img-couple-photo" data-asset="couple.photoRight" alt="" />
+              <img class="img-couple-caption" data-asset="couple.captionRight" alt="" />
+            </div>
             <p data-content="couple.brideQuote"></p>
           </div>
         </div>

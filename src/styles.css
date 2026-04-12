@@ -229,7 +229,9 @@ a {
 }
 
 .invite-col {
-  padding: 24px 16px;
+  /* Horizontal padding used for text/monogram; photo bleeds to column edge via negative margin */
+  --invite-pad-x: 16px;
+  padding: 24px var(--invite-pad-x);
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -237,7 +239,8 @@ a {
   /* On small mobile the right col (invitation text, now rendered first) gets
      slightly tighter horizontal padding to give images more breathing room. */
   .invite-col--right {
-    padding: 20px 12px 24px;
+    --invite-pad-x: 12px;
+    padding: 20px var(--invite-pad-x) 24px;
   }
   /* Photo col (second on mobile) — reduce top padding, no shadow duplication */
   .invite-col-inner {
@@ -324,19 +327,25 @@ a {
   object-position: center top;
   display: block;
 }
-/* Single-column: full-bleed portrait (no inset “card” frame) like reference mẫu */
+/* Single-column: photo spans full width of cream column (flush with vàng/kem box), not just the padded content band */
 @media (max-width: 849px) {
-  .invite-inner-photo {
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+  .invite-col-inner .invite-inner-photo {
+    width: calc(100% + 2 * var(--invite-pad-x));
+    max-width: none;
+    margin-left: calc(-1 * var(--invite-pad-x));
+    margin-right: calc(-1 * var(--invite-pad-x));
   }
   .cover-photo {
     max-width: none;
+    width: 100%;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+  .invite-col--right h5.time-line {
+    font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.45;
   }
 }
 @media (min-width: 850px) {
@@ -453,6 +462,13 @@ a {
 .couple-grid .col-center p {
   text-align: center;
   hyphens: none;
+}
+
+/* Photo + name caption move as one block from the side into column center */
+.couple-pair-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* --- Events / GỢI Ý --- */
@@ -1453,8 +1469,22 @@ input.wpcf7-submit.button {
 [data-animate="bounceInLeft"] { transform: translate3d(-200px, 0, 0); }
 [data-animate="bounceInRight"]{ transform: translate3d( 200px, 0, 0); }
 
+/* Couple section: groom pair from left → center; bride pair from right → center */
+[data-animate="coupleSlideLeft"] {
+  transform: translate3d(calc(-1 * clamp(64px, 20vw, 240px)), 0, 0);
+}
+[data-animate="coupleSlideRight"] {
+  transform: translate3d(clamp(64px, 20vw, 240px), 0, 0);
+}
+
 /* Mobile: larger offsets so the slide movement is clearly visible on screen */
 @media (max-width: 549px) {
+  [data-animate="coupleSlideLeft"] {
+    transform: translate3d(calc(-1 * clamp(88px, 42vw, 300px)), 0, 0);
+  }
+  [data-animate="coupleSlideRight"] {
+    transform: translate3d(clamp(88px, 42vw, 300px), 0, 0);
+  }
   [data-animate="fadeInDown"]   { transform: translate3d(0, -55px, 0); }
   [data-animate="fadeInUp"]     { transform: translate3d(0,  100px, 0); }
   [data-animate="fadeInLeft"]   { transform: translate3d(-55px, 0, 0); }

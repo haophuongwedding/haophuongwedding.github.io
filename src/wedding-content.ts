@@ -25,8 +25,6 @@ export const weddingContent = {
       'https://www.google.com/maps/search/?api=1&query=53+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+%C4%90%E1%BB%93ng+H%E1%BB%9Bi+Qu%E1%BA%A3ng+B%C3%ACnh',
     mapButtonLabel: 'Chỉ đường',
     timelineHtml: 'ĐÓN KHÁCH: 10H30<br />KHAI TIỆC: 11H00',
-    /** Thứ tư 15/04/2026 — hiển thị kèm dòng giờ nếu cần */
-    weekdayNoteHtml: '<span style="font-size: 80%">THỨ TƯ, NGÀY 15 THÁNG 04 NĂM 2026</span>',
   },
 
   couple: {
