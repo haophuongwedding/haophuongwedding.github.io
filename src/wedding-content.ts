@@ -28,12 +28,8 @@ export const weddingContent = {
   },
 
   couple: {
-    groomParentsHtml:
-      '<em><strong>Ông: HOÀNG VĂN HÙNG</strong></em><br /><em><strong>Bà: HOÀNG THỊ THƯ</strong></em>',
-    groomAddress: 'Thôn Văn La, Xã Quảng Ninh, Tỉnh Quảng Trị',
-    brideParentsHtml:
-      '<em><strong>Ông: NGUYỄN THANH BÌNH</strong></em><br /><em><strong>Bà: LÊ THỊ THU HƯƠNG</strong></em>',
-    brideAddress: 'TDP 5, Phường Đồng Thuận, Tỉnh Quảng Trị',
+    groomParentsHtml: 'Ông: Hoàng Văn Hùng<br />Bà: Hoàng Thị Thư',
+    brideParentsHtml: 'Ông: Nguyễn Thanh Bình<br />Bà: Lê Thị Thu Hương',
     groomQuote:
       'Đối với chúng mình hôn nhân không phải là đích đến cuối của tình yêu mà là khởi đầu của hạnh phúc.',
     brideQuote:
