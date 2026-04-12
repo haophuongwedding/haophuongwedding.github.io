@@ -141,7 +141,6 @@ export const weddingAssets = {
     ribbonHeading: '/assets/shared/ribbon-heading.png',
     weddingAttending: '/assets/shared/wedding-attending.png',
     weddingWishes: '/assets/shared/wedding-wishes.png',
-    weddingGift: '/assets/shared/wedding-gift.png',
   },
   rsvp: {
     sidePhoto: G_ORDERED[13]!,

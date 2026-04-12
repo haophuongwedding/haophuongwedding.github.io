@@ -46,6 +46,20 @@ export const weddingContent = {
     bigDayLineHtml: '<em><strong>Ngày trọng đại của Hoàng Văn Hào &amp; Nguyễn Thảo Phương</strong></em>',
   },
 
+  /** Hiển thị trong popup “Gửi quà cưới” — chỉnh STK / ngân hàng cho khớp mã QR */
+  giftModal: {
+    headline:
+      'CẢM ƠN QUÝ KHÁCH VÌ ĐÃ TRỞ THÀNH MỘT PHẦN QUAN TRỌNG TRONG NGÀY ĐẶC BIỆT CỦA CHÚNG TÔI.',
+    groomBankHtml:
+      '<span class="gift-bank-line"><strong>CTK:</strong> HOÀNG VĂN HÀO</span><br />' +
+      '<span class="gift-bank-line"><strong>STK:</strong> (theo mã QR)</span><br />' +
+      '<span class="gift-bank-line">Ngân hàng: (cập nhật tên NH)</span>',
+    brideBankHtml:
+      '<span class="gift-bank-line"><strong>CTK:</strong> NGUYỄN THẢO PHƯƠNG</span><br />' +
+      '<span class="gift-bank-line"><strong>STK:</strong> (theo mã QR)</span><br />' +
+      '<span class="gift-bank-line">Ngân hàng: (cập nhật tên NH)</span>',
+  },
+
   rsvp: {
     parties: [
       {

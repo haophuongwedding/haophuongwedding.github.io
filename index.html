@@ -284,6 +284,9 @@
             <img class="side-rsvp-img" data-asset="rsvp.sidePhoto" alt="" />
           </div>
         </div>
+        <div class="text-center" style="margin-top: 8px">
+          <button type="button" id="btn-gift-open" class="btn-gift">GỬI QUÀ CƯỚI</button>
+        </div>
       </div>
     </div>
 
@@ -310,10 +313,6 @@
     </section>
 
     <section class="section-thanks">
-      <div class="text-center" data-animate="fadeInDown">
-        <img class="img-title-gift" data-asset="shared.weddingGift" alt="Wedding Gift" />
-      </div>
-
       <p>
         <em
           >Bữa tiệc được nâng niu, chỉn chu từng chi tiết đang chờ bạn đến tận hưởng khoảnh khắc thiêng liêng nhất trong cuộc
@@ -322,19 +321,41 @@
         >
       </p>
 
-      <div class="stk-grid">
-        <div class="text-center">
-          <img style="width: 100%; max-width: 300px" data-asset="giftsModal.stkPrimary" alt="QR ngân hàng" />
-        </div>
-        <div class="text-center">
-          <img style="width: 100%; max-width: 300px" data-asset="giftsModal.stkSecondary" alt="QR ngân hàng" />
-        </div>
-      </div>
-
       <div>
         <img class="img-thanks-accent" data-asset="thanks.dateAccent" alt="" />
       </div>
     </section>
+
+    <div
+      id="modal-gift"
+      class="modal-gift"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="gift-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-gift__panel">
+        <button type="button" class="modal-gift__close" data-close-modal aria-label="Đóng">×</button>
+        <h2 id="gift-modal-title" class="modal-gift__headline" data-content="giftModal.headline"></h2>
+        <div class="modal-gift__grid">
+          <div class="modal-gift__col">
+            <img class="modal-gift__avatar" data-asset="couple.photoLeft" alt="" />
+            <div class="modal-gift__bank">
+              <img class="modal-gift__qr" data-asset="giftsModal.stkPrimary" alt="Mã QR chuyển khoản nhà trai" />
+              <div class="modal-gift__bank-text" data-content="giftModal.groomBankHtml"></div>
+            </div>
+          </div>
+          <div class="modal-gift__col">
+            <img class="modal-gift__avatar" data-asset="couple.photoRight" alt="" />
+            <div class="modal-gift__bank">
+              <img class="modal-gift__qr" data-asset="giftsModal.stkSecondary" alt="Mã QR chuyển khoản nhà gái" />
+              <div class="modal-gift__bank-text" data-content="giftModal.brideBankHtml"></div>
+            </div>
+          </div>
+        </div>
+        <p class="modal-gift__footer-script">Thank You!</p>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

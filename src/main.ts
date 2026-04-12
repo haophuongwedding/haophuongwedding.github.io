@@ -9,6 +9,7 @@ import { initRadioIconGroups } from './radio-icons';
 import { initScrollAnimations } from './scroll-animate';
 import { initGalleryAspectRatios } from './gallery-aspect';
 import { initWishesCarousel } from './wishes';
+import { initGiftModal } from './modal';
 
 applyAssets();
 applyWeddingContent();
@@ -77,4 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.getElementById('rsvp-form');
   if (form instanceof HTMLFormElement) initRsvpForm(form);
+
+  initGiftModal();
 });

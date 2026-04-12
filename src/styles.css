@@ -586,12 +586,6 @@ a {
   height: auto;
   width: clamp(140px, 65%, 460px);
 }
-.img-title-gift {
-  display: block;
-  margin: 0 auto;
-  height: auto;
-  width: clamp(130px, 65%, 460px);
-}
 
 /* Invite section images */
 .img-invite-headline {
@@ -1153,12 +1147,13 @@ input.wpcf7-submit.button {
 }
 .modal-gift__panel {
   background: #fff;
-  max-width: 650px;
+  width: min(720px, 100%);
   max-height: 90vh;
   overflow: auto;
-  padding: 24px 16px;
-  border-radius: 8px;
+  padding: 28px 18px 22px;
+  border-radius: 10px;
   position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 .modal-gift__close {
   position: absolute;
@@ -1169,20 +1164,84 @@ input.wpcf7-submit.button {
   font-size: 1.8rem;
   cursor: pointer;
   line-height: 1;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
-.stk-grid {
+.modal-gift__close:focus-visible {
+  outline: 2px solid var(--btn-gold);
+  outline-offset: 2px;
+}
+.modal-gift__headline {
+  margin: 8px 28px 0 8px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(0.72rem, 2.4vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #111;
+}
+.modal-gift__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
-  justify-items: center;
-  max-width: 760px;
-  margin: 18px auto 0;
+  gap: 26px;
+  margin-top: 22px;
+  text-align: left;
 }
-@media (min-width: 550px) {
-  .stk-grid {
+@media (min-width: 560px) {
+  .modal-gift__grid {
     grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
+    gap: 20px 24px;
+    align-items: start;
   }
+}
+.modal-gift__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-gift__avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+.modal-gift__bank {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 320px;
+}
+.modal-gift__qr {
+  width: 100%;
+  max-width: 168px;
+  flex-shrink: 0;
+  height: auto;
+  border-radius: 4px;
+}
+.modal-gift__bank-text {
+  font-family: 'Questrial', 'Times New Roman', Times, serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #222;
+  padding-top: 2px;
+}
+.modal-gift__bank-text .gift-bank-line {
+  display: inline;
+}
+.modal-gift__footer-script {
+  margin: 22px 0 0;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  color: #6a6a6a;
+  font-weight: 400;
 }
 
 /* Lightbox */
