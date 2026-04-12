@@ -144,7 +144,7 @@ a {
     radial-gradient(circle at 90% 22%, rgba(255, 255, 255, 0.88) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
     radial-gradient(circle at 33% 42%, rgba(255, 255, 255, 0.7) 0 3px, rgba(255, 255, 255, 0.1) 6px, transparent 10px),
     radial-gradient(circle at 58% 38%, rgba(255, 255, 255, 0.92) 0 4px, rgba(255, 255, 255, 0.16) 7px, transparent 11px);
-  animation: sparkle-drift-a 5.5s ease-in-out infinite;
+  animation: sparkle-drift-a 11s ease-in-out infinite;
 }
 .effect-sparkle::after {
   background-image:
@@ -156,7 +156,7 @@ a {
     radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.85) 0 3px, rgba(255, 255, 255, 0.12) 6px, transparent 10px),
     radial-gradient(circle at 5% 62%, rgba(255, 255, 255, 0.88) 0 5px, rgba(255, 255, 255, 0.18) 8px, transparent 12px),
     radial-gradient(circle at 95% 12%, rgba(255, 255, 255, 0.8) 0 4px, rgba(255, 255, 255, 0.14) 7px, transparent 11px);
-  animation: sparkle-drift-b 4.5s ease-in-out infinite;
+  animation: sparkle-drift-b 9s ease-in-out infinite;
   opacity: 0.42;
 }
 @keyframes sparkle-drift-a {
@@ -594,23 +594,35 @@ a {
   height: auto;
   width: clamp(200px, 88%, 904px);
 }
-.img-invite-divider {
+/* Decorative rails: span nearly the full cream column (extend into side padding),
+   matching sample sites where divider / venue art / timeline touch the card edges. */
+.invite-col--right .img-invite-divider,
+.invite-col--right .img-venue-illustration,
+.invite-col--right .img-reception-timeline {
   display: block;
-  margin: 0 auto;
   height: auto;
-  width: clamp(120px, 83%, 100%);
+  max-width: none;
+  object-fit: contain;
 }
-.img-venue-illustration {
-  display: block;
-  margin: 0 auto;
-  height: auto;
-  width: clamp(100px, 60%, 100%);
+/* ≤549px: .invite-col--right uses 10px horizontal padding — cancel it for these images */
+@media (max-width: 549px) {
+  .invite-col--right .img-invite-divider,
+  .invite-col--right .img-venue-illustration,
+  .invite-col--right .img-reception-timeline {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+  }
 }
-.img-reception-timeline {
-  display: block;
-  margin: 0 auto;
-  height: auto;
-  width: clamp(120px, 69%, 100%);
+/* ≥550px: column uses 10% side padding — width/margin math: content = 80% of cell → 125% / −12.5% */
+@media (min-width: 550px) {
+  .invite-col--right .img-invite-divider,
+  .invite-col--right .img-venue-illustration,
+  .invite-col--right .img-reception-timeline {
+    width: 125%;
+    margin-left: -12.5%;
+    margin-right: -12.5%;
+  }
 }
 
 /* Couple section images */
@@ -751,7 +763,7 @@ a {
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.7s ease, box-shadow 0.7s ease;
   aspect-ratio: 1;
 }
 .gallery-grid a:hover {
@@ -800,7 +812,7 @@ a {
   display: flex;
   width: 100%;
   transform: translateX(0%);
-  transition: transform 320ms ease;
+  transition: transform 640ms ease;
   will-change: transform;
 }
 
@@ -1137,7 +1149,7 @@ input.wpcf7-submit.button {
   margin: 10px 0 14px;
   box-shadow: 0 2px 10px rgba(227, 6, 19, 0.4);
   -webkit-tap-highlight-color: transparent;
-  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .btn-gift:hover {
@@ -1178,7 +1190,7 @@ input.wpcf7-submit.button {
   padding: 36px 20px 28px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity 0.4s, visibility 0.4s;
 }
 .modal-gift.open {
   opacity: 1;
@@ -1386,7 +1398,7 @@ input.wpcf7-submit.button {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity 0.4s, visibility 0.4s;
 }
 .lightbox-overlay.open {
   opacity: 1;
@@ -1421,10 +1433,10 @@ input.wpcf7-submit.button {
 
 /* --- Hero banner page-load fade-in (matches sample site bg-loaded effect) --- */
 .banner-hero {
-  animation: banner-fade-in 1.1s ease both;
+  animation: banner-fade-in 2.2s ease both;
 }
 .banner-hero--mobile {
-  animation-delay: 0.05s;
+  animation-delay: 0.1s;
 }
 @keyframes banner-fade-in {
   from {
@@ -1446,11 +1458,11 @@ input.wpcf7-submit.button {
 
 /* Initial offset per animation type — desktop distances */
 [data-animate="fadeInDown"]   { transform: translate3d(0, -60px, 0); }
-[data-animate="fadeInUp"]     { transform: translate3d(0,  60px, 0); }
+[data-animate="fadeInUp"]     { transform: translate3d(0,  120px, 0); }
 [data-animate="fadeInLeft"]   { transform: translate3d(-60px, 0, 0); }
 [data-animate="fadeInRight"]  { transform: translate3d( 60px, 0, 0); }
 [data-animate="bounceIn"]     { transform: scale(0.75); }
-[data-animate="bounceInUp"]   { transform: translate3d(0,  60px, 0); }
+[data-animate="bounceInUp"]   { transform: translate3d(0,  120px, 0); }
 [data-animate="bounceInDown"] { transform: translate3d(0, -60px, 0); }
 [data-animate="bounceInLeft"] { transform: translate3d(-200px, 0, 0); }
 [data-animate="bounceInRight"]{ transform: translate3d( 200px, 0, 0); }
@@ -1458,11 +1470,11 @@ input.wpcf7-submit.button {
 /* Mobile: larger offsets so the slide movement is clearly visible on screen */
 @media (max-width: 549px) {
   [data-animate="fadeInDown"]   { transform: translate3d(0, -55px, 0); }
-  [data-animate="fadeInUp"]     { transform: translate3d(0,  55px, 0); }
+  [data-animate="fadeInUp"]     { transform: translate3d(0,  100px, 0); }
   [data-animate="fadeInLeft"]   { transform: translate3d(-55px, 0, 0); }
   [data-animate="fadeInRight"]  { transform: translate3d( 55px, 0, 0); }
   [data-animate="bounceIn"]     { transform: scale(0.78); }
-  [data-animate="bounceInUp"]   { transform: translate3d(0,  55px, 0); }
+  [data-animate="bounceInUp"]   { transform: translate3d(0,  100px, 0); }
   [data-animate="bounceInDown"] { transform: translate3d(0, -55px, 0); }
   [data-animate="bounceInLeft"] { transform: translate3d(-120px, 0, 0); }
   [data-animate="bounceInRight"]{ transform: translate3d( 120px, 0, 0); }
@@ -1473,8 +1485,8 @@ input.wpcf7-submit.button {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.55s ease,
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1.1s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Bounce types — spring overshoot cubic-bezier */
@@ -1484,8 +1496,8 @@ input.wpcf7-submit.button {
 [data-animate="bounceInLeft"].anim-in,
 [data-animate="bounceInRight"].anim-in {
   transition:
-    opacity 0.4s ease,
-    transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity 0.8s ease,
+    transform 1.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Mobile: slower, more dramatic transitions so each element's entrance is clearly
@@ -1493,8 +1505,8 @@ input.wpcf7-submit.button {
 @media (max-width: 549px) {
   [data-animate].anim-in {
     transition:
-      opacity 0.9s ease,
-      transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 1.8s ease,
+      transform 4.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   [data-animate="bounceIn"].anim-in,
   [data-animate="bounceInUp"].anim-in,
@@ -1502,8 +1514,8 @@ input.wpcf7-submit.button {
   [data-animate="bounceInLeft"].anim-in,
   [data-animate="bounceInRight"].anim-in {
     transition:
-      opacity 0.8s ease,
-      transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity 1.6s ease,
+      transform 3.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 

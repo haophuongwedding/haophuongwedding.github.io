@@ -57,7 +57,7 @@ export function initScrollAnimations(): void {
     {
       // Mobile: shrink effective viewport by 80px at bottom so animation fires
       // when element is solidly in view — mirrors Flatsome Waypoint "offset: 80px".
-      // Without this, the 0.75s transition completes while the element is still
+      // Without this, the 1.5s transition completes while the element is still
       // at the screen edge and the user never sees the movement (looks "static").
       threshold: isMobile ? 0.10 : 0.08,
       rootMargin: isMobile ? '0px 0px -80px 0px' : '0px 0px -4% 0px',
